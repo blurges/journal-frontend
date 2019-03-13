@@ -1,7 +1,72 @@
 import gql from "graphql-tag";
 
-export const SIGNIN_MUTATION = gql`
-  mutation SIGNIN_MUTATION($email: String!, $password: String!) {
+export const ALL_ENTRIES_QUERY = gql`
+  query ALL_ENTRIES_QUERY($skip: Int = 0, $first: Int = 10) {
+    entries(first: $first, skip: $skip, orderBy: createdAt_DESC) {
+      id
+      title
+      body
+    },
+    entriesConnection {
+      aggregate {
+        count
+      }
+    }
+  }
+`;
+
+export const CREATE_ENTRY_MUTATION = gql`
+  mutation CREATE_ENTRY_MUTATION(
+    $title: String!
+    $body: String!
+  ) {
+    createEntry(
+      title: $title
+      body: $body
+    ) {
+      id
+    }
+  }
+`;
+
+export const CURRENT_USER_QUERY = gql`
+  query {
+    me {
+      id
+      email
+      name
+    }
+  }
+`;
+
+export const DELETE_ENTRY_MUTATION = gql`
+  mutation DELETE_ENTRY_MUTATION($id: ID!) {
+    deleteEntry(id: $id) {
+      id
+    }
+  }
+`;
+
+export const REQUEST_RESET_MUTATION = gql`
+  mutation REQUEST_RESET_MUTATION($email: String!) {
+    requestReset(email: $email) {
+      message
+    }
+  }
+`;
+
+export const RESET_MUTATION = gql`
+  mutation RESET_MUTATION($resetToken: String!, $password: String!, $confirmPassword: String!) {
+    resetPassword(resetToken: $resetToken, password: $password, confirmPassword: $confirmPassword) {
+      id
+      email
+      name
+    }
+  }
+`;
+
+export const SIGN_IN_MUTATION = gql`
+  mutation SIGN_IN_MUTATION($email: String!, $password: String!) {
     signin(email: $email, password: $password) {
       id
       email
@@ -10,6 +75,52 @@ export const SIGNIN_MUTATION = gql`
   }
 `;
 
+
+export const SIGN_OUT_MUTATION = gql`
+  mutation SIGN_OUT_MUTATION {
+    signout {
+      message
+    }
+  }
+`;
+
+export const SIGN_UP_MUTATION = gql`
+  mutation SIGN_UP_MUTATION($email: String!, $name: String!, $password: String!) {
+    signup(email: $email, name: $name, password: $password) {
+      id
+      email
+      name
+    }
+  }
+`;
+
+export const UPDATE_ENTRY_MUTATION = gql`
+  mutation UPDATE_ENTRY_MUTATION(
+    $id: ID!,
+    $title: String!,
+    $body: String!
+  ) {
+    updateEntry(
+      id: $id,
+      title: $title,
+      body: $body
+    ) {
+      id
+      title
+      body
+    }
+  }
+`;
+
 export default {
-  SIGNIN_MUTATION
+  ALL_ENTRIES_QUERY,
+  CREATE_ENTRY_MUTATION,
+  CURRENT_USER_QUERY,
+  DELETE_ENTRY_MUTATION,
+  UPDATE_ENTRY_MUTATION,
+  REQUEST_RESET_MUTATION,
+  RESET_MUTATION,
+  SIGN_IN_MUTATION,
+  SIGN_OUT_MUTATION,
+  SIGN_UP_MUTATION,
 }
