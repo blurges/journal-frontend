@@ -37,3 +37,14 @@ export interface LinkProps {
   className?: string;
   href: string;
 }
+
+export interface AppState {
+  navbarOpen: boolean;
+}
+
+export type toggleNavbar = (e: React.MouseEvent<HTMLElement>) => void;
+
+export interface ContextProps {
+  navbarOpen: boolean;
+  toggleNavbar:toggleNavbar;
+}
