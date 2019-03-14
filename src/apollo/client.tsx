@@ -1,13 +1,12 @@
-import { ApolloProvider } from "react-apollo";
 import { persistCache } from 'apollo-cache-persist';
 import { RetryLink } from 'apollo-link-retry';
-import { ApolloLink, concat } from 'apollo-link';
+import { ApolloLink } from 'apollo-link';
 import { HttpLink } from 'apollo-link-http';
 import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import {setContext} from 'apollo-link-context';
-import config from "./config"
-import {PersistentStorage, PersistedData, NormalizedCacheObject} from './types/index'
+import config from "../config"
+import {PersistentStorage, PersistedData, NormalizedCacheObject} from '../types/index'
 
 let uri
 if (process.env.NODE_ENV === "development") {
@@ -77,4 +76,3 @@ export default new ApolloClient({
   link,
   cache
 });
-

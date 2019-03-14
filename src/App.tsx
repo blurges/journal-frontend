@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
-import './App.css';
 import { ApolloProvider } from "react-apollo";
-import apolloClient from './Apollo'
+import apolloClient from './apollo/client'
 import HomePage from './pages/home';
 import EntriesPage from './pages/entries'
+import { ThemeProvider } from 'styled-components';
+import { theme } from './theme';
 
 class App extends Component {
   render() {
     return (
-      <ApolloProvider client={apolloClient}>
-        <>
+      <ThemeProvider theme={theme}>
+        <ApolloProvider client={apolloClient}>
           <HomePage />
           <EntriesPage />
-        </>
-      </ApolloProvider>
+        </ApolloProvider>
+      </ThemeProvider>
     );
   }
 }
