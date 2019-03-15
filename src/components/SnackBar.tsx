@@ -6,17 +6,21 @@ class SnackBar extends Component {
   render() {
     return (
       <Context.Consumer>
-        {({snackBarText, setSnackbarText}) =>
-          <section>
-            <p>
-              {snackBarText}
-            </p>
-            <button
-              onClick={() => setSnackbarText('text')}
-            >
-              Dismiss
-            </button>
-          </section>
+        {({snackBarText, setSnackbarText}) => {
+          if (snackBarText) {
+            return <section>
+              <p>
+                {snackBarText}
+              </p>
+              <button
+                onClick={() => setSnackbarText('')}
+              >
+                Dismiss
+              </button>
+            </section>
+          }
+          return null
+        }
         }
       </Context.Consumer>
 
@@ -24,13 +28,6 @@ class SnackBar extends Component {
   }
 }
 
-const StyledSnackbar = styled(SnackBar)`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-content: space-between;
-  align-items: stretch;
-  padding-top: 2px;
-  background: ${props => props.theme.colors.tealLighter};
-`;
+const StyledSnackbar = styled(SnackBar)``;
 
-export default SnackBar;
+export default StyledSnackbar;

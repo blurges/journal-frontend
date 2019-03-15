@@ -35,13 +35,13 @@ class App extends Component<{}, AppState> {
 
   render() {
     return (
-      <Context.Provider value={this.state}>
-        <ThemeProvider theme={theme}>
-          <ApolloProvider client={apolloClient}>
+      <ApolloProvider client={apolloClient}>
+        <Context.Provider value={this.state}>
+          <ThemeProvider theme={theme}>
             <Auth />
-          </ApolloProvider>
-        </ThemeProvider>
-      </Context.Provider>
+          </ThemeProvider>
+        </Context.Provider>
+      </ApolloProvider>
     );
   }
 }
