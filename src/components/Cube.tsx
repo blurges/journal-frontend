@@ -6,33 +6,31 @@ class Cube extends Component<CubeProps> {
   render () {
     return (
       <main className={this.props.className}>
-        <div className='wrapper'>
+        <div 
+          className={`cube ${this.props.face}`}>
           <div 
-            className={`cube ${this.props.face}`}>
-            <div 
-              className="face face-front">
-              {this.props.front}
-            </div>
-            <div 
-              className="face face-left">
-              {this.props.left}
-            </div>
-            <div 
-              className="face face-top">
-              {this.props.top}
-            </div>
-            <div 
-              className="face face-back">
-              {this.props.back}
-            </div>
-            <div 
-              className="face face-bottom">
-              {this.props.bottom}
-            </div>
-            <div 
-              className="face face-right">
-              {this.props.right}
-            </div>
+            className="face face-front">
+            {this.props.front}
+          </div>
+          <div 
+            className="face face-left">
+            {this.props.left}
+          </div>
+          <div 
+            className="face face-top">
+            {this.props.top}
+          </div>
+          <div 
+            className="face face-back">
+            {this.props.back}
+          </div>
+          <div 
+            className="face face-bottom">
+            {this.props.bottom}
+          </div>
+          <div 
+            className="face face-right">
+            {this.props.right}
           </div>
         </div>
       </main>
@@ -41,70 +39,66 @@ class Cube extends Component<CubeProps> {
 }
 
 const StyledCube = styled(Cube)`
-.wrapper {
-  width: 250px;
-  height: 250px;
-  margin: 60px auto;
-  perspective: 600px;
-  text-align: left;
-}
+flex: 1;
+perspective: 0px;
+text-align: left;
 
 .cube {
-  width: 100%;
-  height: 100%;
+  width: 100vh;
+  height: 100vh;
   position: relative;
   transform-style: preserve-3d;
-  transform: translateZ(-100px);
+  transform: translateZ(0px);
   transition: transform 0.5s ease-in;
 
   &.front {
-    transform: rotateY(0deg) translateZ(calc(250px / 2));
+    transform: rotateY(0deg) translateZ(calc(100vh / 2));
   }
   &.top {
-    transform: rotateX(90deg) translateZ(calc(250px / 2));
+    transform: rotateX(-90deg) translateZ(calc(100vh / 2));
   }
   &.back {
-    transform: rotateY(180deg) translateZ(calc(250px / 2));
+    transform: rotateY(180deg) translateZ(calc(100vh / 2));
   }
   &.right {
-    transform: rotateY(90deg) translateZ(calc(250px / 2));
+    transform: rotateY(-90deg) translateZ(calc(100vh / 2));
   }
   &.left {
-    transform: rotateY(-90deg) translateZ(calc(250px / 2));
+    transform: rotateY(90deg) translateZ(calc(100vh / 2));
   }
   &.bottom {
-    transform: rotateX(-90deg) translateZ(250px - (calc(250px / 2)));
+    transform: rotateX(90deg) translateZ(100vh - (calc(100vh / 2)));
   }
 }
 
 .face {
   position: absolute;
-  width: 250px;
-  height: 250px;
+  width: 100vh;
+  height: 100vh;
 
-  background: rgba(250, 250, 250, 0.1);
+  background: rgba(250, 250, 250, 0.4);
   border: 3px solid ${props => props.theme.colors.tealLighter};
   border-radius: ${props => props.theme.borderRadius};
 
   &-front {
-    transform: rotateY(0deg) translateZ(calc(250px / 2));
+    transform: rotateY(0deg) translateZ(calc(100vh / 2));
   }
   &-top {
-    height: 250px;
-    transform: rotateX(90deg) translateZ(calc(250px / 2));
+    height: 100vh;
+    transform: rotateX(90deg) translateZ(calc(100vh / 2));
   }
   &-back {
-    transform: rotateY(180deg) translateZ(calc(250px / 2));
+    transform: rotateY(180deg) translateZ(calc(100vh / 2));
   }
   &-right {
-    transform: rotateY(90deg) translateZ(calc(250px / 2));
+    transform: rotateY(90deg) translateZ(calc(100vh / 2));
   }
   &-left {
-    transform: rotateY(-90deg) translateZ(calc(250px / 2));
+    transform: rotateY(-90deg) translateZ(calc(100vh / 2));
   }
   &-bottom {
-    height: 250px;
-    transform: rotateX(-90deg) translateZ(250px - (calc(250px / 2)));
+    height: 100vh;
+    transform: rotateX(-90deg) translateZ(100vh - (calc(100vh / 2)));
   }
 }
 `

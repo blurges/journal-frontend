@@ -26,7 +26,21 @@ const {
   ThemeProvider
 } = styledComponents as styledComponents.ThemedStyledComponentsModule<Theme>;
 
-export { 
+
+const GlobalStyle = createGlobalStyle`
+  html, body, #root {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
+  #root {
+    display: flex;
+    flex-direction: column;
+  }
+`
+
+export {
+  GlobalStyle,
   css,
   createGlobalStyle,
   keyframes,

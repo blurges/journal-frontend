@@ -17,7 +17,7 @@ export class Auth extends Component {
           let face:CubeFaceType = 'front'
           if (data !== undefined) {
             if (data.me) {
-              face = 'back'
+              face = 'right'
             }
           }
           return <>
@@ -29,10 +29,10 @@ export class Auth extends Component {
                 face={face}
                 front={<SignIn />}
                 left={'set password'}
-                right={'signup'}
+                right={<List />}
                 top={'top'}
                 bottom={'forgot'}
-                back={<List />}
+                back={''}
               />
             }
             <SnackBar />
