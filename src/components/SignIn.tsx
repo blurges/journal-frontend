@@ -1,8 +1,35 @@
 import React, { Component } from 'react';
 import { Mutation } from "react-apollo";
 import {SIGN_IN_MUTATION} from '../apollo/mutations'
+import { saveToState } from '../types'
 
 class SignIn extends Component {
+  private passwordRef: React.RefObject<HTMLInputElement>;
+  private emailRef: React.RefObject<HTMLInputElement>;
+  constructor() {
+    super({});
+    this.passwordRef = React.createRef();
+    this.emailRef = React.createRef();
+  }
+  state = {
+    password: '',
+    email: '',
+  }
+
+  saveToState:saveToState = e => {
+    const { name, type, value } = e.target;
+    const val = type === 'number' ? parseFloat(value) : value;
+    this.setState({ [name]: val });
+  };
+  validate = (action:any) => {
+    if (!this.state.email || !this.state.password) {
+      this.setState({
+        error: 'Missing'
+      })
+    }
+    action()
+  }
+
   render() {
     return (
       <Mutation
@@ -10,14 +37,34 @@ class SignIn extends Component {
         variables={{email: `z.sobieraj@gmail.com`, password: `asdfasdf`}}
       >
         {(signin, {error, loading}) => (
-          <button
-            onClick={async e => {
-              e.preventDefault();
-              await signin();
-            }}
-          >
-            Sign In
-          </button>
+          <form onSubmit={() => this.validate(signin)}>
+            <input
+              disabled={loading}
+              aria-busy={loading}
+              aria-label="email"
+              type="email"
+              name="email"
+              placeholder="email"
+              value={this.state.email}
+              onChange={this.saveToState}
+              autoFocus
+              ref={this.emailRef}
+              />
+            <input
+              disabled={loading}
+              aria-busy={loading}
+              aria-label="password"
+              type="password"
+              name="password"
+              placeholder="password"
+              value={this.state.password}
+              onChange={this.saveToState}
+              ref={this.passwordRef}
+            />
+            <button>
+              Sign In
+            </button>
+          </form>
         )}
       </Mutation>
     );

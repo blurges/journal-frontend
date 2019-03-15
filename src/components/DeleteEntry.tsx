@@ -1,0 +1,44 @@
+import React, { Component } from 'react';
+import Button from './Button';
+import { DeleteEntryProps } from '../types'
+
+class DeleteEntry extends Component<DeleteEntryProps> {
+  handleClick = () => {
+    if (this.props.confirmDelete) {
+      this.props.deleteEntry()
+    } else {
+      this.props.beginDelete()
+    }
+  }
+
+  render() {
+    const { cancelDelete, confirmEdit, confirmDelete, updating, deleting} = this.props
+
+    return (
+      <>
+        {confirmDelete &&
+          <Button
+            disabled={deleting}
+            ariaBusy={deleting}
+            shrink={confirmEdit}
+            onClick={cancelDelete}
+          >
+            Cancel
+          </Button>
+        }
+        <Button
+          disabled={updating || deleting ? true : false}
+          ariaBusy={updating || deleting ? true : false}
+          shrink={confirmEdit}
+          onClick={this.handleClick}
+        >
+          {confirmEdit && 'D'}
+          {confirmDelete && 'Confirm'}
+          {!confirmEdit && !confirmDelete && 'Delete'}
+        </Button>
+      </>
+    );
+  }
+}
+
+export default DeleteEntry;

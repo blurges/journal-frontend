@@ -1,20 +1,5 @@
 import gql from "graphql-tag";
 
-export const ALL_ENTRIES_QUERY = gql`
-  query ALL_ENTRIES_QUERY($skip: Int = 0, $first: Int = 10) {
-    entries(first: $first, skip: $skip, orderBy: createdAt_DESC) {
-      id
-      title
-      body
-    },
-    entriesConnection {
-      aggregate {
-        count
-      }
-    }
-  }
-`;
-
 export const CREATE_ENTRY_MUTATION = gql`
   mutation CREATE_ENTRY_MUTATION(
     $title: String!
@@ -25,16 +10,6 @@ export const CREATE_ENTRY_MUTATION = gql`
       body: $body
     ) {
       id
-    }
-  }
-`;
-
-export const CURRENT_USER_QUERY = gql`
-  query {
-    me {
-      id
-      email
-      name
     }
   }
 `;
@@ -113,9 +88,7 @@ export const UPDATE_ENTRY_MUTATION = gql`
 `;
 
 export default {
-  ALL_ENTRIES_QUERY,
   CREATE_ENTRY_MUTATION,
-  CURRENT_USER_QUERY,
   DELETE_ENTRY_MUTATION,
   UPDATE_ENTRY_MUTATION,
   REQUEST_RESET_MUTATION,

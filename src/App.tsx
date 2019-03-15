@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { ApolloProvider } from "react-apollo";
-import apolloClient from './apollo/client'
-import HomePage from './pages/home';
-import EntriesPage from './pages/entries'
+import apolloClient from './apollo/client';
+import Auth from './components/Auth';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './theme';
 import { AppState, toggleNavbar, ContextProps } from './types'
@@ -30,8 +29,7 @@ class App extends Component<{}, AppState> {
       <Context.Provider value={this.state}>
         <ThemeProvider theme={theme}>
           <ApolloProvider client={apolloClient}>
-            <HomePage />
-            <EntriesPage />
+            <Auth />
           </ApolloProvider>
         </ThemeProvider>
       </Context.Provider>

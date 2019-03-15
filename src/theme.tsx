@@ -13,6 +13,7 @@ const theme = {
     lg: '900px',
     xl: '1200px'
   },
+  borderRadius: '5px',
   rem: '16px',
   em: '16px'
 };
