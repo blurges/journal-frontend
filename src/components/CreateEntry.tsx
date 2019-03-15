@@ -28,7 +28,11 @@ class CreateEntry extends Component {
   };
 
   handleChange:handleChangeType = e => {
-    console.log('CreateEntry.tsx 32', {e})
+    if (e.target) {
+      this.setState({
+        body: e.currentTarget.value
+      })
+    }
   };
 
   update = (cache:any, payload:any) => {

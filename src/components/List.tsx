@@ -24,14 +24,13 @@ class Entries extends Component {
       >
         {({ data, error, loading, fetchMore }) => {
           let entries:EntryInterface[] = []
-          let entriesConnection:any = {}
+          let entriesConnection:any = {aggregate: {count: 0}}
           let last = false
           let empty = false
           if (data !== undefined) {
-            entries = data.entries
-            entriesConnection = data.entriesConnection
-            if (entries === undefined) {entries = []}
-            if (entries && entriesConnection) {
+            if (data.entries && data.entriesConnection) {
+              entries = data.entries
+              entriesConnection = data.entriesConnection
               last = entries.length > 0 && entries.length === entriesConnection.aggregate.count 
               empty = entries.length === 0 && entriesConnection.aggregate.count === 0
             }

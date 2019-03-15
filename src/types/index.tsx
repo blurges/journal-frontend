@@ -59,7 +59,7 @@ export interface AppState {
 export type toggleNavbar = (e: React.MouseEvent<HTMLElement>) => void;
 export type setSnackbarTextType = (text: string) => void;
 export type saveToState = (e: React.ChangeEvent<HTMLInputElement>) => void;
-export type handleChangeType = (e: React.FormEvent<HTMLTextAreaElement>) => void;
+export type handleChangeType = (event: React.SyntheticEvent<HTMLTextAreaElement>) => void;
 
 export interface ContextProps {
   snackBarText: string;

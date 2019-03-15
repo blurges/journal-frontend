@@ -13,10 +13,12 @@ import DynamicTextarea from './DynamicTextarea';
 import { EntryInterface, EntryProps, handleChangeType } from '../types'
 
 export default class Entry extends Component<EntryProps> {
-  static propTypes = {
-    entry: PropTypes.object.isRequired,
-  };
+  private textareaRef: React.RefObject<HTMLTextAreaElement>;
 
+  constructor(props: EntryProps) {
+    super(props);
+    this.textareaRef = React.createRef();
+  }
   state = {
     title: this.props.entry.title,
     body: this.props.entry.body,
@@ -25,7 +27,11 @@ export default class Entry extends Component<EntryProps> {
   };
 
   handleChange:handleChangeType = e => {
-    console.log('Entry.tsx 30', {e})
+    if (e.target) {
+      this.setState({
+        body: e.currentTarget.value
+      })
+    }
   };
 
   beginUpdate = () => {
@@ -33,6 +39,10 @@ export default class Entry extends Component<EntryProps> {
       confirmEdit: true,
       confirmDelete: false
     })
+    const textareaRef = document.getElementById(this.props.entry.id) 
+    if (textareaRef) {
+      textareaRef.focus()
+    }
   }
 
   cancelUpdate = () => {
@@ -96,8 +106,8 @@ export default class Entry extends Component<EntryProps> {
               <p>{updating}</p>
                 <label htmlFor="body" aria-label="body">
                   <DynamicTextarea
-                    id="body"
-                    name="body"
+                    id={entry.id}
+                    name="entry"
                     spellCheck={false}
                     placeholder="How's things?"
                     cols={80}

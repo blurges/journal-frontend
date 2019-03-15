@@ -23,23 +23,19 @@ class Header extends Component {
                 {data.me &&
                   <SignOut />
                 }
+
+                <button>
+                  Menu
+                </button>
               </header>
             }
           </Query>
         }
       </Context.Consumer>
-
     );
   }
 }
 
-const StyledHeader = styled(Header)`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-content: space-between;
-  align-items: stretch;
-  padding-top: 2px;
-  background: ${props => props.theme.colors.tealLighter};
-`;
+const StyledHeader = styled(Header)``;
 
 export default StyledHeader;
