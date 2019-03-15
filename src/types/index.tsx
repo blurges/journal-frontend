@@ -51,6 +51,18 @@ export interface ButtonProps {
   shrink?: boolean;
 }
 
+export type CubeFaceType = 'front' | 'back' | 'top' | 'bottom' | 'left' | 'right';
+export interface CubeProps {
+  className?: string;
+  face: CubeFaceType;
+  front: React.ReactChild;
+  back: React.ReactChild;
+  top: React.ReactChild;
+  bottom: React.ReactChild;
+  left: React.ReactChild;
+  right: React.ReactChild;
+}
+
 export interface AppState {
   navbarOpen: boolean;
   snackBarText: string;
