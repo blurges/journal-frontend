@@ -79,6 +79,9 @@ export interface ContextProps {
   toggleNavbar: toggleNavbar;
   setSnackbarText: setSnackbarTextType;
 }
+export interface HeaderProps {
+  className?: string;
+}
 
 export interface EntryInterface {
   id: string;

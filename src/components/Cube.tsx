@@ -40,65 +40,67 @@ class Cube extends Component<CubeProps> {
 
 const StyledCube = styled(Cube)`
 flex: 1;
-perspective: 0px;
+display: flex;
+justify-content: center;
+align-items: center;
+perspective: none;
 text-align: left;
+perspective: 600px;
 
+/* using vmin and not 100% because translate */
 .cube {
-  width: 100vh;
-  height: 100vh;
+  width: 600px;
+  height: 600px;
   position: relative;
   transform-style: preserve-3d;
-  transform: translateZ(0px);
   transition: transform 0.5s ease-in;
 
   &.front {
-    transform: rotateY(0deg) translateZ(calc(100vh / 2));
+    transform: translateZ(-600px) rotateY(0deg);
   }
   &.top {
-    transform: rotateX(-90deg) translateZ(calc(100vh / 2));
+    transform: translateZ(-600px) rotateX(-90deg);
   }
   &.back {
-    transform: rotateY(180deg) translateZ(calc(100vh / 2));
+    transform: translateZ(-600px) rotateY(180deg);
   }
   &.right {
-    transform: rotateY(-90deg) translateZ(calc(100vh / 2));
+    transform: translateZ(-600px) rotateY(90deg);
   }
   &.left {
-    transform: rotateY(90deg) translateZ(calc(100vh / 2));
+    transform: translateZ(-600px) rotateY(-90deg);
   }
   &.bottom {
-    transform: rotateX(90deg) translateZ(100vh - (calc(100vh / 2)));
+    transform: translateZ(-600px) rotateX(90deg);
   }
 }
 
 .face {
   position: absolute;
-  width: 100vh;
-  height: 100vh;
+  width: 600px;
+  height: 600px;
 
   background: rgba(250, 250, 250, 0.4);
   border: 3px solid ${props => props.theme.colors.tealLighter};
   border-radius: ${props => props.theme.borderRadius};
 
   &-front {
-    transform: rotateY(0deg) translateZ(calc(100vh / 2));
+    transform: rotateY(0deg) translateZ(calc(600px));
   }
   &-top {
-    height: 100vh;
-    transform: rotateX(90deg) translateZ(calc(100vh / 2));
+    transform: rotateX(90deg) translateZ(calc(600px));
   }
   &-back {
-    transform: rotateY(180deg) translateZ(calc(100vh / 2));
+    transform: rotateY(180deg) translateZ(calc(600px));
   }
   &-right {
-    transform: rotateY(90deg) translateZ(calc(100vh / 2));
+    transform: rotateY(-90deg) translateZ(calc(600px));
   }
   &-left {
-    transform: rotateY(-90deg) translateZ(calc(100vh / 2));
+    transform: rotateY(90deg) translateZ(calc(600px));
   }
   &-bottom {
-    height: 100vh;
-    transform: rotateX(-90deg) translateZ(100vh - (calc(100vh / 2)));
+    transform: rotateX(-90deg) translateZ(calc(600px));
   }
 }
 `

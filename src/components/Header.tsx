@@ -4,9 +4,10 @@ import {CURRENT_USER_QUERY} from '../apollo/queries'
 import Link from './Link'
 import SignOut from './SignOut'
 import styled from "../theme";
+import {HeaderProps} from "../types";
 import {Context} from '../App';
 
-class Header extends Component {
+class Header extends Component<HeaderProps> {
   render() {
     return (
       <Context.Consumer>
@@ -15,7 +16,7 @@ class Header extends Component {
             query={CURRENT_USER_QUERY}
           >
             {({data, error, loading}) => 
-              <header>
+              <header className={this.props.className}>
                 <Link href="http://aleks.tech">
                   A
                 </Link>
@@ -36,6 +37,9 @@ class Header extends Component {
   }
 }
 
-const StyledHeader = styled(Header)``;
+const StyledHeader = styled(Header)`
+  position: fixed;
+  z-index: 1;
+`;
 
 export default StyledHeader;
