@@ -49,58 +49,58 @@ perspective: 600px;
 
 /* using vmin and not 100% because translate */
 .cube {
-  width: 600px;
-  height: 600px;
+  width: 100vmin;
+  height: 100vmin;
   position: relative;
   transform-style: preserve-3d;
   transition: transform 0.5s ease-in;
 
   &.front {
-    transform: translateZ(-600px) rotateY(0deg);
+    transform: translateZ(-50vmin) rotateY(0deg);
   }
   &.top {
-    transform: translateZ(-600px) rotateX(-90deg);
+    transform: translateZ(-50vmin) rotateX(-90deg);
   }
   &.back {
-    transform: translateZ(-600px) rotateY(180deg);
+    transform: translateZ(-50vmin) rotateY(180deg);
   }
   &.right {
-    transform: translateZ(-600px) rotateY(90deg);
+    transform: translateZ(-50vmin) rotateY(90deg);
   }
   &.left {
-    transform: translateZ(-600px) rotateY(-90deg);
+    transform: translateZ(-50vmin) rotateY(-90deg);
   }
   &.bottom {
-    transform: translateZ(-600px) rotateX(90deg);
+    transform: translateZ(-50vmin) rotateX(90deg);
   }
 }
 
 .face {
   position: absolute;
-  width: 600px;
-  height: 600px;
+  width: 100vmin;
+  height: 100vmin;
 
   background: rgba(250, 250, 250, 0.4);
   border: 3px solid ${props => props.theme.colors.tealLighter};
   border-radius: ${props => props.theme.borderRadius};
 
   &-front {
-    transform: rotateY(0deg) translateZ(calc(600px));
+    transform: rotateY(0deg) translateZ(calc(50vmin));
   }
   &-top {
-    transform: rotateX(90deg) translateZ(calc(600px));
+    transform: rotateX(90deg) translateZ(calc(50vmin));
   }
   &-back {
-    transform: rotateY(180deg) translateZ(calc(600px));
+    transform: rotateY(180deg) translateZ(calc(50vmin));
   }
   &-right {
-    transform: rotateY(-90deg) translateZ(calc(600px));
+    transform: rotateY(-90deg) translateZ(calc(50vmin));
   }
   &-left {
-    transform: rotateY(90deg) translateZ(calc(600px));
+    transform: rotateY(90deg) translateZ(calc(50vmin));
   }
   &-bottom {
-    transform: rotateX(-90deg) translateZ(calc(600px));
+    transform: rotateX(-90deg) translateZ(calc(50vmin));
   }
 }
 `
