@@ -53,15 +53,19 @@ export interface ButtonProps {
 
 export interface AppState {
   navbarOpen: boolean;
+  snackBarText: string;
 }
 
 export type toggleNavbar = (e: React.MouseEvent<HTMLElement>) => void;
+export type setSnackbarTextType = (text: string) => void;
 export type saveToState = (e: React.ChangeEvent<HTMLInputElement>) => void;
 export type handleChangeType = (e: React.FormEvent<HTMLTextAreaElement>) => void;
 
 export interface ContextProps {
+  snackBarText: string;
   navbarOpen: boolean;
   toggleNavbar: toggleNavbar;
+  setSnackbarText: setSnackbarTextType;
 }
 
 export interface EntryInterface {

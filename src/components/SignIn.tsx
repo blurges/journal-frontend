@@ -31,10 +31,11 @@ class SignIn extends Component {
   }
 
   render() {
+    const {email, password} = this.state
     return (
       <Mutation
         mutation={SIGN_IN_MUTATION}
-        variables={{email: `z.sobieraj@gmail.com`, password: `asdfasdf`}}
+        variables={{email, password}}
       >
         {(signin, {error, loading}) => (
           <form onSubmit={() => this.validate(signin)}>

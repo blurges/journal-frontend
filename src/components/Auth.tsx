@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import HomePage from '../pages/home';
-import EntriesPage from '../pages/entries';
 import Header from '../components/Header';
 import Spinner from '../components/Spinner';
 import { Query } from "react-apollo";
 import {CURRENT_USER_QUERY} from '../apollo/queries'
+import SignIn from './SignIn';
+import List from './List';
+import SnackBar from './SnackBar';
 
 export class Auth extends Component {
   render () {
@@ -14,7 +15,9 @@ export class Auth extends Component {
           <>
             <Header />
             {loading && <Spinner />}
-            {!loading && <EntriesPage />}
+            {!loading && data.me && <List />}
+            {!loading && !(data.me) && <SignIn />}
+            <SnackBar />
           </>
        )}
       </Query>
