@@ -60,6 +60,7 @@ export interface CubeProps {
   bottom: React.ReactChild;
   left: React.ReactChild;
   right: React.ReactChild;
+  zoomOut: VoidFunction;
 }
 
 export interface AppState {
@@ -82,7 +83,7 @@ export type dynamicThemeType = {
 
 export type toggleNavbar = (e: React.MouseEvent<HTMLElement>) => void;
 export type setSnackbarTextType = (text: string) => void;
-export type saveToState = (e: React.ChangeEvent<HTMLInputElement>) => void;
+export type saveToStateType = (e: React.ChangeEvent<HTMLInputElement>) => void;
 export type handleChangeType = (event: React.SyntheticEvent<HTMLTextAreaElement>) => void;
 
 export interface ContextProps {

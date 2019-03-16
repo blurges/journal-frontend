@@ -9,7 +9,19 @@ import Cube from './Cube';
 import Spinner from './Spinner';
 import {CubeFaceType} from '../types'
 
-export class Auth extends Component {
+export class Auth extends Component{
+  state = {
+    face: 'front'
+  }
+  setFace () {
+    // multiply translateZ by 2 (or -2?)
+    // setState({face: newFace})
+    // set focus to face
+    // set timeout?
+    // divide translateZ by 2 (or -2?)
+  }
+  zoomOut:VoidFunction= () => (undefined);
+
   render () {
     return (
       <Query query={CURRENT_USER_QUERY}>
@@ -31,6 +43,7 @@ export class Auth extends Component {
               top={'top'}
               bottom={'forgot'}
               back={''}
+              zoomOut={this.zoomOut}
             />
             <SnackBar />
           </>

@@ -1,27 +1,27 @@
 import React, { Component } from 'react';
 import { Mutation } from "react-apollo";
 import {SIGN_IN_MUTATION} from '../apollo/mutations'
-import { saveToState } from '../types'
+import { saveToStateType } from '../types'
 
 class SignIn extends Component {
-  private passwordRef: React.RefObject<HTMLInputElement>;
-  private emailRef: React.RefObject<HTMLInputElement>;
-  constructor(props: any) {
-    super(props);
-    this.passwordRef = React.createRef();
-    this.emailRef = React.createRef();
-  }
   state = {
-    password: '',
-    email: '',
+    password: 'wesweswes',
+    email: 'z.sobieraj@gmail.com',
+    error: ''
   }
 
-  saveToState:saveToState = e => {
-    const { name, type, value } = e.target;
+  saveToState = (e:any) => {
+    const {name, type, value} = e.target
     const val = type === 'number' ? parseFloat(value) : value;
-    this.setState({ [name]: val });
+    if (!this.state.email || !this.state.password) {
+      this.setState({
+        error: 'Missing'
+      })
+    }
+    this.setState({ [name]: value });
   };
-  validate = (action:any) => {
+  validate = (event:any, action:any) => {
+    event.preventDefault()
     if (!this.state.email || !this.state.password) {
       this.setState({
         error: 'Missing'
@@ -40,7 +40,8 @@ class SignIn extends Component {
         }}
       >
         {(signin, {error, loading}) => (
-          <form onSubmit={() => this.validate(signin)}>
+          <form onSubmit={(event) => this.validate(event, signin)}>
+            <p>{this.state.error}</p>
             <input
               disabled={loading}
               aria-busy={loading}
@@ -52,8 +53,7 @@ class SignIn extends Component {
               value={this.state.email}
               onChange={this.saveToState}
               required
-              ref={this.emailRef}
-              />
+            />
             <input
               disabled={loading}
               aria-busy={loading}
@@ -65,7 +65,6 @@ class SignIn extends Component {
               value={this.state.password}
               onChange={this.saveToState}
               required
-              ref={this.passwordRef}
             />
             <button>
               Sign In

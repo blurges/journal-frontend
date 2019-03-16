@@ -48,6 +48,24 @@ class App extends Component<{}, AppState> {
       }
     };
   }
+  zoomOut = () => {
+    console.log('zoom out')
+    // dynamicTheme: {
+    //   cube: {
+    //     translateZ: `${(-(this.vmin) * 2)}px`,
+    //     ...state.dynamicTheme.cube
+    //     ...state.dynamicTheme.cube
+    //   },
+    //   face: {
+    //     width: `${this.windowWidth}px`,
+    //     height: `${this.windowHeight - (4 * this.rem)}px`,
+    //     translateZ: `${this.windowHeight}px`
+    //   }
+    // },
+    // this.setState(state => ({
+      
+    // }));
+  };
   toggleNavbar:toggleNavbar = (e) => {
     e.stopPropagation()
     this.setState(state => ({
@@ -67,37 +85,37 @@ class App extends Component<{}, AppState> {
       ...state
     }))
   }
-  componentWillMount(){
-    if (this.windowHeight < this.windowWidth) {
-      this.setState(state => ({
-        context: {
-          toggleNavbar: this.toggleNavbar,
-          ...state.context
-        },
-        dynamicTheme: {
-          cube: {
-            width: `${this.windowWidth}px`,
-            height: `${this.windowHeight - (4 * this.rem)}px`,
-            translateZ: `${-(this.windowHeight)}px`
-          },
-          face: {
-            width: `${this.windowWidth}px`,
-            height: `${this.windowHeight - (4 * this.rem)}px`,
-            translateZ: `${this.windowHeight}px`
-          }
-        }
-      }))
-      console.log('ran')
-    } else {
-      this.setState(state => ({
-        context: {
-          toggleNavbar: this.toggleNavbar,
-          ...state.context
-        },
-        ...state
-      }))
-    }
-  }
+  // componentWillMount(){
+  //   if (this.windowHeight < this.windowWidth) {
+  //     this.setState(state => ({
+  //       context: {
+  //         toggleNavbar: this.toggleNavbar,
+  //         ...state.context
+  //       },
+  //       dynamicTheme: {
+  //         cube: {
+  //           width: `${this.windowWidth}px`,
+  //           height: `${this.windowHeight - (4 * this.rem)}px`,
+  //           translateZ: `${-(this.windowHeight)}px`
+  //         },
+  //         face: {
+  //           width: `${this.windowWidth}px`,
+  //           height: `${this.windowHeight - (4 * this.rem)}px`,
+  //           translateZ: `${this.windowHeight}px`
+  //         }
+  //       }
+  //     }))
+  //     console.log('ran')
+  //   } else {
+  //     this.setState(state => ({
+  //       context: {
+  //         toggleNavbar: this.toggleNavbar,
+  //         ...state.context
+  //       },
+  //       ...state
+  //     }))
+  //   }
+  // }
 
 
 

@@ -47,8 +47,14 @@ const StyledList = styled(InfiniteScroll)`
   padding: 0;
   width: 100%;
   max-width: ${props => props.theme.breakpoints.sm};
+  height: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
   display: grid;
   row-gap: 2rem;
+  ::-webkit-scrollbar { 
+    display: none; 
+  }
 `;
 
 export default StyledList
