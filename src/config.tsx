@@ -2,7 +2,7 @@ export const apolloServer: {
   development: string;
   production: string;
 } = {
-  development: `http://localhost:3003`,
+  development: `https://alekstech-yoga-prod.herokuapp.com`,
   production: `https://alekstech-yoga-prod.herokuapp.com`,
 }
 

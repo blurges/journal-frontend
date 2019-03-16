@@ -32,7 +32,7 @@
     "typescript": "3.3.3333"
   },
   "scripts": {
-    "start": "PORT=3002 react-scripts start",
+    "start": "react-scripts start -p $PORT",
     "dev": "PORT=3002 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
