@@ -20,8 +20,8 @@ class App extends Component<{}, AppState> {
   private windowHeight: number;
   private vmin: number;
 
-  constructor() {
-    super({});
+  constructor(props: any) {
+    super(props);
     this.rem = 16;
     this.html = document.documentElement;
     this.windowWidth = window.innerWidth;

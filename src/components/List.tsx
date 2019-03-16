@@ -1,86 +1,54 @@
 import React, { Component } from 'react';
-import { Query } from 'react-apollo';
-import Entry from './Entry';
-import InfiniteScroll from './InfiniteScroll';
-import Spinner from './Spinner';
-import { ALL_ENTRIES_QUERY } from '../apollo/queries';
-import { EntryInterface } from '../types'
-import CreateEntry from '../components/CreateEntry';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import { InfiniteScrollProps } from '../types'
 
-const perPage:number = 10;
+class InfiniteScroll extends Component<InfiniteScrollProps> {
+  static propTypes = {
+    onFetchMore: PropTypes.func.isRequired
+  };
 
-class Entries extends Component {
-  
-  render() {
+  componentDidMount() {
+    window.addEventListener("scroll", this.handleOnScroll);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.handleOnScroll);
+  }
+
+
+  handleOnScroll = () => {
+    // http://stackoverflow.com/questions/9439725/javascript-how-to-detect-if-browser-window-is-scrolled-to-bottom
+    var scrollTop =
+      (document.documentElement && document.documentElement.scrollTop) ||
+      document.body.scrollTop;
+    var scrollHeight =
+      (document.documentElement && document.documentElement.scrollHeight) ||
+      document.body.scrollHeight;
+    var clientHeight =
+      document.documentElement.clientHeight || window.innerHeight;
+    var scrolledToBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight;
+    if (scrolledToBottom) {
+      this.props.onFetchMore();
+    }
+  };
+
+  render () {
     return (
-      <Query
-        query={ALL_ENTRIES_QUERY}
-        variables={{
-          type: "TOP",
-          skip: 1 * perPage - perPage,
-        }}
-        notifyOnNetworkStatusChange
-        fetchPolicy="cache-and-network"
-      >
-        {({ data, error, loading, fetchMore }) => {
-          let entries:EntryInterface[] = []
-          let entriesConnection:any = {aggregate: {count: 0}}
-          let last = false
-          let empty = false
-          if (data !== undefined) {
-            if (data.entries && data.entriesConnection) {
-              entries = data.entries
-              entriesConnection = data.entriesConnection
-              last = entries.length > 0 && entries.length === entriesConnection.aggregate.count 
-              empty = entries.length === 0 && entriesConnection.aggregate.count === 0
-            }
-          }
-
-          if (error) return <p>Error: {error.message}</p>;
-
-          return (
-            <InfiniteScroll
-              onFetchMore={() => {
-                if (data.entriesConnection.aggregate.count > data.entries.length && !loading) {
-                  fetchMore({
-                    variables: {
-                      skip: data.entries.length
-                    },
-                    updateQuery: (prev, { fetchMoreResult }) => {
-                      if (!fetchMoreResult) return prev;
-                      return Object.assign({}, prev, {
-                        entries: [...prev.entries, ...fetchMoreResult.entries]
-                      });
-                    }
-                  })
-                }
-              }}
-            >
-              <CreateEntry />
-
-              {entries.map((entry:EntryInterface) =>
-                <Entry entry={entry} key={entry.id} />
-              )}
-
-              <div className="x-centered">
-                {loading && <Spinner/>}
-
-                {last &&
-                  <p>The end.</p>
-                }
-
-                {empty &&
-                  <p>Your entries will appear here.</p>
-                }
-              </div>
-
-            </InfiniteScroll>
-          );
-        }}
-      </Query>
-    );
+      <ul className={this.props.className}>
+        {this.props.children}
+      </ul>
+    )
   }
 }
 
-export default Entries;
-export { ALL_ENTRIES_QUERY };
+const StyledList = styled(InfiniteScroll)`
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: ${props => props.theme.breakpoints.sm};
+  display: grid;
+  row-gap: 2rem;
+`;
+
+export default StyledList

@@ -6,8 +6,8 @@ import { saveToState } from '../types'
 class SignIn extends Component {
   private passwordRef: React.RefObject<HTMLInputElement>;
   private emailRef: React.RefObject<HTMLInputElement>;
-  constructor() {
-    super({});
+  constructor(props: any) {
+    super(props);
     this.passwordRef = React.createRef();
     this.emailRef = React.createRef();
   }
@@ -48,9 +48,10 @@ class SignIn extends Component {
               type="email"
               name="email"
               placeholder="email"
+              autoComplete="email"
               value={this.state.email}
               onChange={this.saveToState}
-              autoFocus
+              required
               ref={this.emailRef}
               />
             <input
@@ -60,8 +61,10 @@ class SignIn extends Component {
               type="password"
               name="password"
               placeholder="password"
+              autoComplete="password"
               value={this.state.password}
               onChange={this.saveToState}
+              required
               ref={this.passwordRef}
             />
             <button>
