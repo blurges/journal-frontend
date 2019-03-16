@@ -1,4 +1,5 @@
 import { StoreValue } from 'apollo-utilities';
+import { Location as HLocation } from "history";
 
 export interface PersistentStorage<T> {
   getItem: (key: string) => Promise<T> | T;
@@ -49,6 +50,36 @@ export interface ButtonProps {
   onClick?(): void;
   shrink?: boolean;
 }
+
+export interface InputProps {
+  className?: string;
+  disabled: boolean;
+  ariaBusy: boolean;
+  ariaLabel: string;
+  type: string;
+  name: string;
+  placeholder: string;
+  autoComplete: string;
+  value: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void; 
+  required: boolean;
+}
+
+// Reach Router typings from https://github.com/DefinitelyTyped/DefinitelyTyped/blob/9b1350a79b61ea91616b7d37433f528f1228ea21/types/reach__router/index.d.ts
+export type WindowLocation = Window["location"] & HLocation;
+export type RouteComponentProps<TParams = {}> = Partial<TParams> & {
+  path?: string;
+  default?: boolean;
+  location?: WindowLocation;
+  navigate?: NavigateFn;
+  uri?: string;
+};
+export type NavigateFn = (to: string, options?: NavigateOptions<{}>) => void;
+export interface NavigateOptions<TState> {
+  state?: TState;
+  replace?: boolean;
+}
+
 
 export type CubeFaceType = 'front' | 'back' | 'top' | 'bottom' | 'left' | 'right';
 export interface CubeProps {
@@ -144,5 +175,8 @@ export interface InfiniteScrollProps {
   onFetchMore(): void;
 }
 export interface CreateEntryProps {
+  className?: string;
+}
+export interface SignInProps {
   className?: string;
 }

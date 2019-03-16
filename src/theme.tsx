@@ -35,9 +35,11 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
   }
   #root {
+    position: relative;
+    padding-top: 4rem;
     display: flex;
     flex-direction: column;
-    position: relative;
+    align-items: center;
   }
 `
 

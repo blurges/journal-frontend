@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
 import { Mutation } from "react-apollo";
-import {SIGN_IN_MUTATION} from '../apollo/mutations'
-import { saveToStateType } from '../types'
+import {SIGN_IN_MUTATION} from '../apollo/mutations';
+import { RouteComponentProps, SignInProps } from '../types';
+import {navigate} from "@reach/router";
+import styled from "styled-components";
+import Button from "./Button";
+import Input from "./Input";
 
-class SignIn extends Component {
+class SignIn extends Component<SignInProps & RouteComponentProps> {
   state = {
-    password: 'wesweswes',
-    email: 'z.sobieraj@gmail.com',
+    password: '',
+    email: '',
     error: ''
   }
 
-  saveToState = (e:any) => {
-    const {name, type, value} = e.target
+  saveToState = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const {name, type, value} = event.target
     const val = type === 'number' ? parseFloat(value) : value;
     if (!this.state.email || !this.state.password) {
       this.setState({
@@ -30,6 +34,10 @@ class SignIn extends Component {
     action()
   }
 
+  routeAfterSignIn = () => {
+    navigate(`/entries`)
+  }
+
   render() {
     return (
       <Mutation
@@ -38,37 +46,45 @@ class SignIn extends Component {
           email: this.state.email,
           password: this.state.password
         }}
+        update={this.routeAfterSignIn}
       >
         {(signin, {error, loading}) => (
-          <form onSubmit={(event) => this.validate(event, signin)}>
+          <form
+            className={this.props.className}
+            onSubmit={(event) => this.validate(event, signin)}
+          >
             <p>{this.state.error}</p>
-            <input
+            <Input
               disabled={loading}
-              aria-busy={loading}
-              aria-label="email"
+              ariaBusy={loading}
+              ariaLabel="email"
               type="email"
               name="email"
               placeholder="email"
               autoComplete="email"
               value={this.state.email}
               onChange={this.saveToState}
-              required
+              required={true}
             />
-            <input
+            <Input
               disabled={loading}
-              aria-busy={loading}
-              aria-label="password"
+              ariaBusy={loading}
+              ariaLabel="password"
               type="password"
               name="password"
               placeholder="password"
               autoComplete="password"
               value={this.state.password}
               onChange={this.saveToState}
-              required
+              required={true}
             />
-            <button>
+            <Button
+              disabled={loading}
+              ariaBusy={loading}
+              type="submit"
+            >
               Sign In
-            </button>
+            </Button>
           </form>
         )}
       </Mutation>
@@ -76,4 +92,11 @@ class SignIn extends Component {
   }
 }
 
-export default SignIn;
+const StyledSignIn = styled(SignIn)`
+  width: 100%;
+  max-width: ${props => props.theme.breakpoints.sm};
+  display: grid;
+  row-gap: 2rem;
+`
+
+export default StyledSignIn;

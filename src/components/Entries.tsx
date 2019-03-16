@@ -4,12 +4,12 @@ import Entry from './Entry';
 import InfiniteScroll from './List';
 import Spinner from './Spinner';
 import { ALL_ENTRIES_QUERY } from '../apollo/queries';
-import { EntryInterface } from '../types'
+import { EntryInterface, RouteComponentProps } from '../types'
 import CreateEntry from './CreateEntry';
 
 const perPage:number = 10;
 
-class Entries extends Component {
+class Entries extends Component<RouteComponentProps> {
   
   render() {
     return (

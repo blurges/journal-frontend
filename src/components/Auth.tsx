@@ -5,50 +5,33 @@ import {CURRENT_USER_QUERY} from '../apollo/queries'
 import SignIn from './SignIn';
 import Entries from './Entries';
 import SnackBar from './SnackBar';
-import Cube from './Cube';
-import Spinner from './Spinner';
-import {CubeFaceType} from '../types'
+import Router from "./Router"
+import {navigate} from "@reach/router"
 
 export class Auth extends Component{
-  state = {
-    face: 'front'
-  }
-  setFace () {
-    // multiply translateZ by 2 (or -2?)
-    // setState({face: newFace})
-    // set focus to face
-    // set timeout?
-    // divide translateZ by 2 (or -2?)
-  }
-  zoomOut:VoidFunction= () => (undefined);
-
   render () {
     return (
-      <Query query={CURRENT_USER_QUERY}>
-        {({ data, loading, error }) => {
-          let face:CubeFaceType = 'front'
-          if (data !== undefined) {
-            if (data.me) {
-              face = 'right'
+
+        <Query query={CURRENT_USER_QUERY}>
+          {({ data, loading, error }) => {
+            if (data !== undefined) {
+              if (data.me) {
+                navigate(`/entries`)
+              } else {
+                navigate(`/sign-in`)
+              }
             }
-          }
-          return <>
-            <Header />
-            {error && <p>{error}</p>}
-            <Cube
-              face={face}
-              front={<SignIn />}
-              left={'set password'}
-              right={<Entries />}
-              top={'top'}
-              bottom={'forgot'}
-              back={''}
-              zoomOut={this.zoomOut}
-            />
-            <SnackBar />
-          </>
-       }}
-      </Query>
+            return <>
+              <Header />
+              {error && <p>{error}</p>}
+              <Router>
+                <SignIn path="/sign-in" />
+                <Entries path="/entries" />
+              </Router>
+              <SnackBar />
+            </>
+        }}
+        </Query>
     )
   }
 }
