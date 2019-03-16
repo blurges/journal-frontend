@@ -38,8 +38,7 @@ class Header extends Component<HeaderProps> {
 }
 
 const StyledHeader = styled(Header)`
-  position: fixed;
-  z-index: 1;
+  height: 4rem;
 `;
 
 export default StyledHeader;

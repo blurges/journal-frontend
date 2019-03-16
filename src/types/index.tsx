@@ -17,7 +17,7 @@ export interface StoreObject {
   [storeFieldKey: string]: StoreValue;
 }
 
-export interface Theme {
+export interface ThemeInterface {
   colors: {
     black: string;
     tealLighter: string;
@@ -66,6 +66,20 @@ export interface CubeProps {
 export interface AppState {
   navbarOpen: boolean;
   snackBarText: string;
+  dynamicTheme: dynamicThemeType
+}
+
+export type dynamicThemeType = {
+  cube: {
+    width: string;
+    height: string;
+    translateZ: string;
+  },
+  face: {
+    width: string;
+    height: string;
+    translateZ: string;
+  }
 }
 
 export type toggleNavbar = (e: React.MouseEvent<HTMLElement>) => void;

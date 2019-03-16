@@ -1,7 +1,7 @@
 import * as styledComponents from "styled-components";
-import {Theme} from './types'
+import {ThemeInterface} from './types'
 
-const theme = {
+const staticTheme = {
   colors: {
     black: 'black',
     tealLighter: 'green',
@@ -15,7 +15,7 @@ const theme = {
   },
   borderRadius: '5px',
   rem: '16px',
-  em: '16px'
+  em: '16px',
 };
 
 const {
@@ -24,7 +24,7 @@ const {
   createGlobalStyle,
   keyframes,
   ThemeProvider
-} = styledComponents as styledComponents.ThemedStyledComponentsModule<Theme>;
+} = styledComponents as styledComponents.ThemedStyledComponentsModule<ThemeInterface>;
 
 
 const GlobalStyle = createGlobalStyle`
@@ -49,6 +49,6 @@ export {
   createGlobalStyle,
   keyframes,
   ThemeProvider,
-  theme
+  staticTheme
 };
 export default styled;
