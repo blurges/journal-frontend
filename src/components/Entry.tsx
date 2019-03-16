@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
-import gql from 'graphql-tag';
-import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import {ALL_ENTRIES_QUERY} from '../apollo/queries';
 import {
   DELETE_ENTRY_MUTATION, 
@@ -12,7 +11,7 @@ import DeleteEntry from './DeleteEntry';
 import DynamicTextarea from './DynamicTextarea';
 import { EntryInterface, EntryProps, handleChangeType } from '../types'
 
-export default class Entry extends Component<EntryProps> {
+class Entry extends Component<EntryProps> {
   private textareaRef: React.RefObject<HTMLTextAreaElement>;
 
   constructor(props: EntryProps) {
@@ -99,28 +98,27 @@ export default class Entry extends Component<EntryProps> {
             refetchQueries={[{query: ALL_ENTRIES_QUERY}]}
           >
           {(deleteEntry, { loading: deleting }) => (
-            <li>
+            <li className={this.props.className}>
               <form
                 data-test="form"
                 aria-busy={updating || deleting ? true : false}
               >
-                <p>{updating}</p>
-                  <label htmlFor="body" aria-label="body">
-                    <DynamicTextarea
-                      id={entry.id}
-                      name="entry"
-                      spellCheck={false}
-                      placeholder="How's things?"
-                      cols={40}
-                      rows={2}
-                      maxRows={21}
-                      required={true}
-                      readOnly={!confirmEdit}
-                      value={body}
-                      onChange={this.handleChange}
-                    />
-                  </label>
-                  <div className="actions">
+                <label htmlFor="body" aria-label="body">
+                  <DynamicTextarea
+                    id={entry.id}
+                    name="entry"
+                    spellCheck={false}
+                    placeholder="How's things?"
+                    cols={40}
+                    rows={2}
+                    maxRows={21}
+                    required={true}
+                    readOnly={!confirmEdit}
+                    value={body}
+                    onChange={this.handleChange}
+                  />
+                </label>
+                <div className="actions">
                     <UpdateEntry
                       confirmEdit={confirmEdit}
                       confirmDelete={confirmDelete}
@@ -152,4 +150,16 @@ export default class Entry extends Component<EntryProps> {
   }
 }
 
+const StyledEntry = styled(Entry)`
+  list-style-type: none;
+  form {
+    display: grid;
+    row-gap: 2rem;
+  }
+  .actions {
+    display: flex;
+  }
+`;
+
 export { UPDATE_ENTRY_MUTATION, DELETE_ENTRY_MUTATION };
+export default StyledEntry

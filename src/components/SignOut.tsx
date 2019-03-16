@@ -15,10 +15,11 @@ export class SignOut extends Component {
       <Button
         onClick={this.updateInCache}
         type="button"
+        shrink={true}
         disabled={false}
         ariaBusy={false}
       >
-        Sign out
+        >
       </Button>
     )
   }

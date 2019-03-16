@@ -3,11 +3,6 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { InfiniteScrollProps } from '../types'
 
-const StyledList = styled.ul`
-  margin: 0;
-  padding: 0;
-`;
-
 class InfiniteScroll extends Component<InfiniteScrollProps> {
   static propTypes = {
     onFetchMore: PropTypes.func.isRequired
@@ -40,11 +35,20 @@ class InfiniteScroll extends Component<InfiniteScrollProps> {
 
   render () {
     return (
-      <StyledList>
+      <ul className={this.props.className}>
         {this.props.children}
-      </StyledList>
+      </ul>
     )
   }
 }
 
-export default InfiniteScroll
+const StyledList = styled(InfiniteScroll)`
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: ${props => props.theme.breakpoints.sm};
+  display: grid;
+  row-gap: 2rem;
+`;
+
+export default StyledList

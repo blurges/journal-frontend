@@ -26,8 +26,6 @@ export interface ThemeInterface {
   breakpoints: {
     sm: string;
     md: string;
-    lg: string;
-    xl: string;
   },
   rem: string;
   em: string;
@@ -39,14 +37,15 @@ export interface LinkProps {
 }
 
 export interface EntryProps {
+  className?: string;
   entry: EntryInterface;
 }
 
 export interface ButtonProps {
+  className?: string;
   type: string;
   disabled: boolean;
   ariaBusy: boolean;
-  className?: string;
   onClick?(): void;
   shrink?: boolean;
 }
@@ -139,5 +138,9 @@ export interface UpdateEntryProps {
 }
 
 export interface InfiniteScrollProps {
+  className?: string;
   onFetchMore(): void;
+}
+export interface CreateEntryProps {
+  className?: string;
 }

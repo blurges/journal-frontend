@@ -24,10 +24,6 @@ class Header extends Component<HeaderProps> {
                 {data.me &&
                   <SignOut />
                 }
-
-                <button>
-                  Menu
-                </button>
               </header>
             }
           </Query>
@@ -42,6 +38,8 @@ const StyledHeader = styled(Header)`
   z-index: 1;
   width: 100%;
   height: 4rem;
+  display: flex;
+  justify-content: space-between;
   background: #ffffff;
 `;
 

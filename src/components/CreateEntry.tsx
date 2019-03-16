@@ -1,27 +1,14 @@
 import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
-import gql from 'graphql-tag';
+import styled from 'styled-components';
 import {ALL_ENTRIES_QUERY} from '../apollo/queries';
 import Button from './Button';
 import DynamicTextarea from './DynamicTextarea';
 import { ApolloConsumer } from 'react-apollo';
-import { handleChangeType } from '../types'
+import { CREATE_ENTRY_MUTATION } from '../apollo/mutations';
+import { handleChangeType, CreateEntryProps } from '../types'
 
-const CREATE_ENTRY_MUTATION = gql`
-  mutation CREATE_ENTRY_MUTATION(
-    $title: String!
-    $body: String!
-  ) {
-    createEntry(
-      title: $title
-      body: $body
-    ) {
-      id
-    }
-  }
-`;
-
-class CreateEntry extends Component {
+class CreateEntry extends Component<CreateEntryProps> {
   state = {
     title: '',
     body: ''
@@ -68,7 +55,7 @@ class CreateEntry extends Component {
             {(createEntry, { loading, error }) => (
               // debounce, throttle
               // create or update
-              <li>
+              <li className={this.props.className}>
                 <form
                   data-test="form"
                   onSubmit={async e => {
@@ -109,5 +96,16 @@ class CreateEntry extends Component {
   }
 }
 
-export default CreateEntry;
+const StyledCreateEntry = styled(CreateEntry)`
+  list-style-type: none;
+  form {
+    display: grid;
+    row-gap: 2rem;
+  }
+  .actions {
+    display: flex;
+  }
+`;
+
+export default StyledCreateEntry;
 export { CREATE_ENTRY_MUTATION };

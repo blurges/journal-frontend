@@ -8,10 +8,8 @@ const staticTheme = {
     tealDark: 'green'
   },
   breakpoints: {
-    sm: '500px',
-    md: '700px',
-    lg: '900px',
-    xl: '1200px'
+    sm: '600px',
+    md: '1024'
   },
   borderRadius: '5px',
   rem: '16px',

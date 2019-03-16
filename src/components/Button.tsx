@@ -9,6 +9,7 @@ class Button extends Component<ButtonProps> {
   render() {
     return (
       <button
+        className={this.props.className}
         onClick={this.props.onClick}
         type={this.props.type}
         disabled={this.props.disabled}
@@ -22,7 +23,7 @@ class Button extends Component<ButtonProps> {
 
 const StyledButton = styled(Button)`
   width: ${props => props.shrink ? '5rem' : '100%'};
-  height: 4rem;
+  height: 3rem;
   margin: 0 1rem;
   border: 1px solid ${props => props.theme.colors.tealLighter};
   padding: 0 1rem;

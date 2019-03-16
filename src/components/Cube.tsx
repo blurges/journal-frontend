@@ -80,6 +80,10 @@ perspective: 500px;
   width: ${props => props.theme.face.width};
   height: ${props => props.theme.face.height};
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   background: #ffffff;
   border: 5px solid ${props => props.theme.colors.tealLighter};
   border-radius: ${props => props.theme.borderRadius};
