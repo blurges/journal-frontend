@@ -64,8 +64,7 @@ export interface CubeProps {
 }
 
 export interface AppState {
-  navbarOpen: boolean;
-  snackBarText: string;
+  context: ContextProps,
   dynamicTheme: dynamicThemeType
 }
 

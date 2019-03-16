@@ -80,27 +80,27 @@ perspective: 100vmin;
   width: ${props => props.theme.face.width};
   height: ${props => props.theme.face.height};
 
-  background: rgba(250, 250, 250, 0.4);
-  border: 3px solid ${props => props.theme.colors.tealLighter};
+  background: #ffffff;
+  border: 5px solid ${props => props.theme.colors.tealLighter};
   border-radius: ${props => props.theme.borderRadius};
 
   &-front {
-    transform: rotateY(0deg) translateZ(calc(50vmin - 2rem));
+    transform: rotateY(0deg) translateZ(${props => props.theme.face.translateZ});
   }
   &-top {
-    transform: rotateX(90deg) translateZ(calc(50vmin - 2rem));
+    transform: rotateX(90deg) translateZ(${props => props.theme.face.translateZ});
   }
   &-back {
-    transform: rotateY(180deg) translateZ(calc(50vmin - 2rem));
+    transform: rotateY(180deg) translateZ(${props => props.theme.face.translateZ});
   }
   &-right {
-    transform: rotateY(-90deg) translateZ(calc(50vmin - 2rem));
+    transform: rotateY(-90deg) translateZ(${props => props.theme.face.translateZ});
   }
   &-left {
-    transform: rotateY(90deg) translateZ(calc(50vmin - 2rem));
+    transform: rotateY(90deg) translateZ(${props => props.theme.face.translateZ});
   }
   &-bottom {
-    transform: rotateX(-90deg) translateZ(calc(50vmin - 2rem));
+    transform: rotateX(-90deg) translateZ(${props => props.theme.face.translateZ});
   }
 }
 `

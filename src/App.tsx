@@ -27,63 +27,79 @@ class App extends Component<{}, AppState> {
     this.windowWidth = window.innerWidth;
     this.windowHeight = window.innerHeight;
     this.vmin = window.innerHeight < window.innerWidth ? window.innerHeight : window.innerWidth;
+    this.state = {
+      context: {
+        snackBarText: '',
+        navbarOpen: false,
+        setSnackbarText: () => undefined,
+        toggleNavbar: () => undefined
+      },
+      dynamicTheme: {
+        cube: {
+          width: `${this.windowWidth}px`,
+          height: `${this.windowHeight - (4 * this.rem)}px`,
+          translateZ: `${-(this.vmin + (2 * this.rem))}px`
+        },
+        face: {
+          width: `${this.windowWidth}px`,
+          height: `${this.windowHeight - (4 * this.rem)}px`,
+          translateZ: `${(this.windowWidth)}px`
+        }
+      }
+    };
   }
   toggleNavbar:toggleNavbar = (e) => {
     e.stopPropagation()
     this.setState(state => ({
-      navbarOpen: !state.navbarOpen
+      context: {
+        navbarOpen: !state.context.navbarOpen,
+        ...state.context
+      },
+      ...state
     }));
   };
   setSnackbarText:setSnackbarTextType = (text) => {
     this.setState(state => ({
-      snackBarText: text
+      context: {
+        snackBarText: text,
+        ...state.context
+      },
+      ...state
     }))
   }
   componentWillMount(){
-
-    let vm = this.windowHeight >= this.windowWidth ? this.windowHeight : this.windowWidth
-    if (this.html !== null) {
-      const style = getComputedStyle(this.html)
-      const fontSize = style.fontSize
-      if (fontSize !== null) {
-        this.rem = parseFloat(fontSize);
-      }
-    }
-    
-    this.setState({
-      dynamicTheme: {
-        cube: {
-          width: `${this.windowWidth}px`,
-          height: `${this.windowHeight}px`,
-          translateZ: `${-(this.vmin / 2)}px`
+    if (this.windowHeight < this.windowWidth) {
+      this.setState(state => ({
+        context: {
+          toggleNavbar: this.toggleNavbar,
+          ...state.context
         },
-        face: {
-          width: `${this.windowWidth}px`,
-          height: `${this.windowHeight}px`,
-          translateZ: `${this.vmin / 2}px`
+        dynamicTheme: {
+          cube: {
+            width: `${this.windowWidth}px`,
+            height: `${this.windowHeight - (4 * this.rem)}px`,
+            translateZ: `${-(this.windowHeight)}px`
+          },
+          face: {
+            width: `${this.windowWidth}px`,
+            height: `${this.windowHeight - (4 * this.rem)}px`,
+            translateZ: `${this.windowHeight}px`
+          }
         }
-      }
-    })
+      }))
+      console.log('ran')
+    } else {
+      this.setState(state => ({
+        context: {
+          toggleNavbar: this.toggleNavbar,
+          ...state.context
+        },
+        ...state
+      }))
+    }
   }
 
-  state = {
-    snackBarText: '',
-    navbarOpen: false,
-    toggleNavbar: this.toggleNavbar,
-    setSnackbarText: this.setSnackbarText,
-    dynamicTheme: {
-      cube: {
-        width: `${this.windowWidth - (4 * this.rem)}px`,
-        height: `${this.windowHeight - (4 * this.rem)}px`,
-        translateZ: `${-(this.vmin + (2 * this.rem))}px`
-      },
-      face: {
-        width: `${this.windowWidth - (4 * this.rem)}px`,
-        height: `${this.windowHeight - (4 * this.rem)}px`,
-        translateZ: `${(this.vmin / 2) - (2 * this.rem)}px`
-      }
-    }
-  };
+
 
   render() {
     const theme = {
@@ -92,7 +108,7 @@ class App extends Component<{}, AppState> {
     }
     return (
       <ApolloProvider client={apolloClient}>
-        <Context.Provider value={this.state}>
+        <Context.Provider value={this.state.context}>
           <ThemeProvider theme={theme}>
             <>
               <Auth />
