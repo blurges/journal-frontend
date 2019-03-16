@@ -3,21 +3,9 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { InfiniteScrollProps } from '../types'
 
-const StyledList = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 30px;
-  max-width: ${props => props.theme.maxWidth};
-  margin: 0 auto;
-  padding: 1rem;
-  .x-centered {
-    display: flex;
-    justify-content: center;
-    p {
-      font-size: 1.5em;
-      text-align: center;
-    }
-  }
+const StyledList = styled.ul`
+  margin: 0;
+  padding: 0;
 `;
 
 class InfiniteScroll extends Component<InfiniteScrollProps> {

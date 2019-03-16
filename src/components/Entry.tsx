@@ -99,49 +99,50 @@ export default class Entry extends Component<EntryProps> {
             refetchQueries={[{query: ALL_ENTRIES_QUERY}]}
           >
           {(deleteEntry, { loading: deleting }) => (
-            <form
-              data-test="form"
-              aria-busy={updating || deleting ? true : false}
-            >
-              <p>{updating}</p>
-                <label htmlFor="body" aria-label="body">
-                  <DynamicTextarea
-                    id={entry.id}
-                    name="entry"
-                    spellCheck={false}
-                    placeholder="How's things?"
-                    cols={80}
-                    rows={2}
-                    maxRows={21}
-                    required={true}
-                    readOnly={!confirmEdit}
-                    value={body}
-                    onChange={this.handleChange}
-                  />
-                </label>
-                <div className="actions">
-                  <UpdateEntry
-                    confirmEdit={confirmEdit}
-                    confirmDelete={confirmDelete}
-                    updating={updating}
-                    deleting={deleting}
-                    beginUpdate={this.beginUpdate}
-                    cancelUpdate={this.cancelUpdate}
-                    updateEntry={updateEntry}
-                  />
-                  <DeleteEntry
-                    id={entry.id}
-                    confirmEdit={confirmEdit}
-                    confirmDelete={confirmDelete}
-                    updating={updating}
-                    deleting={deleting}
-                    beginDelete={this.beginDelete}
-                    cancelDelete={this.cancelDelete}
-                    deleteEntry={deleteEntry}
-                  />
-                </div>
-            </form>
-
+            <li>
+              <form
+                data-test="form"
+                aria-busy={updating || deleting ? true : false}
+              >
+                <p>{updating}</p>
+                  <label htmlFor="body" aria-label="body">
+                    <DynamicTextarea
+                      id={entry.id}
+                      name="entry"
+                      spellCheck={false}
+                      placeholder="How's things?"
+                      cols={40}
+                      rows={2}
+                      maxRows={21}
+                      required={true}
+                      readOnly={!confirmEdit}
+                      value={body}
+                      onChange={this.handleChange}
+                    />
+                  </label>
+                  <div className="actions">
+                    <UpdateEntry
+                      confirmEdit={confirmEdit}
+                      confirmDelete={confirmDelete}
+                      updating={updating}
+                      deleting={deleting}
+                      beginUpdate={this.beginUpdate}
+                      cancelUpdate={this.cancelUpdate}
+                      updateEntry={updateEntry}
+                    />
+                    <DeleteEntry
+                      id={entry.id}
+                      confirmEdit={confirmEdit}
+                      confirmDelete={confirmDelete}
+                      updating={updating}
+                      deleting={deleting}
+                      beginDelete={this.beginDelete}
+                      cancelDelete={this.cancelDelete}
+                      deleteEntry={deleteEntry}
+                    />
+                  </div>
+              </form>
+            </li>  
           )}
           </Mutation>
 

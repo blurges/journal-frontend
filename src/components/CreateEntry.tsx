@@ -68,37 +68,39 @@ class CreateEntry extends Component {
             {(createEntry, { loading, error }) => (
               // debounce, throttle
               // create or update
-              <form
-                data-test="form"
-                onSubmit={async e => {
-                  e.preventDefault();
-                  const res = await createEntry();
-                }}
-                aria-busy={loading}
-              >
-                <label htmlFor="body" aria-label="body">
-                  <DynamicTextarea
-                    id="body"
-                    name="body"
-                    spellCheck={false}
-                    placeholder="How's things?"
-                    cols={80}
-                    rows={2}
-                    maxRows={20}
-                    required={true}
-                    value={this.state.body}
-                    onChange={this.handleChange}
-                    readOnly={loading ? true : false}
-                  />
-                </label>
-                <Button
-                  disabled={loading}
-                  ariaBusy={loading}
-                  type="submit"
+              <li>
+                <form
+                  data-test="form"
+                  onSubmit={async e => {
+                    e.preventDefault();
+                    const res = await createEntry();
+                  }}
+                  aria-busy={loading}
                 >
-                  Save
-                </Button>
-              </form>
+                  <label htmlFor="body" aria-label="body">
+                    <DynamicTextarea
+                      id="body"
+                      name="body"
+                      spellCheck={false}
+                      placeholder="How's things?"
+                      cols={40}
+                      rows={2}
+                      maxRows={20}
+                      required={true}
+                      value={this.state.body}
+                      onChange={this.handleChange}
+                      readOnly={loading ? true : false}
+                    />
+                  </label>
+                  <Button
+                    disabled={loading}
+                    ariaBusy={loading}
+                    type="submit"
+                  >
+                    Save
+                  </Button>
+                </form>
+              </li>
             )}
           </Mutation>
         )}
