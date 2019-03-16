@@ -6,14 +6,15 @@ import apolloClient from '../apollo/client';
 import Button from './Button';
 
 export class SignOut extends Component {
-  updateInCache = () => {
+  removeToken = () => {
     const data = { me: null }
     apolloClient.writeQuery({ query: CURRENT_USER_QUERY, data });
+    window.localStorage.clear()
   };
   render () {
     return (
       <Button
-        onClick={this.updateInCache}
+        onClick={this.removeToken}
         type="button"
         shrink={true}
         disabled={false}

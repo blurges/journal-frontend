@@ -103,6 +103,7 @@ export interface EntryInterface {
 }
 
 export interface DynamicTextareaProps {
+  className?: string;
   id: string;
   name: string;
   spellCheck: boolean;

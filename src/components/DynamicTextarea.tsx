@@ -7,6 +7,7 @@ class DynamicTextarea extends Component<DynamicTextareaProps> {
   render() {
     return (
       <TextareaAutosize
+        className={this.props.className}
         id={this.props.id}
         name={this.props.name}
         spellCheck={this.props.spellCheck}
@@ -32,7 +33,7 @@ const StyledTextarea = styled(DynamicTextarea)`
   padding: 1rem;
   background: white;
   font-family: 'Merriweather Regular';
-  font-size: 2em;
+  font-size: 2rem;
   resize: none;
   transition: all 0.5s;
   &[disabled] {
