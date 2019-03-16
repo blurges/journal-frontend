@@ -45,7 +45,7 @@ justify-content: center;
 align-items: center;
 perspective: none;
 text-align: left;
-perspective: 100vmin;
+perspective: 500px;
 
 /* the 4rem and 2rem offset the height of the header, which is 4rem */
 .cube {

@@ -38,7 +38,7 @@ class App extends Component<{}, AppState> {
         cube: {
           width: `${this.windowWidth}px`,
           height: `${this.windowHeight - (4 * this.rem)}px`,
-          translateZ: `${-(this.vmin + (2 * this.rem))}px`
+          translateZ: `${-(this.vmin)}px`
         },
         face: {
           width: `${this.windowWidth}px`,
