@@ -4,31 +4,41 @@ import {CURRENT_USER_QUERY} from '../apollo/queries'
 import Link from './Link'
 import SignOut from './SignOut'
 import styled from "../theme";
-import {HeaderProps} from "../types";
-import {Context} from '../App';
+import {HeaderProps, ReduxState} from "../types";
+import { connect } from 'react-redux'
+import store from '../redux';
 
 class Header extends Component<HeaderProps> {
+  constructor(props:HeaderProps) {
+    super(props);
+
+    this.state = {
+      navbarOpen: false
+    };
+
+    store.subscribe(() => {
+      this.setState({
+        navbarOpen: store.getState().navbarOpen
+      });
+    });
+  }
   render() {
     return (
-      <Context.Consumer>
-        {({navbarOpen, toggleNavbar}) =>
-          <Query
-            query={CURRENT_USER_QUERY}
-          >
-            {({data, error, loading}) => 
-              <header className={this.props.className}>
-                <Link href="http://aleks.tech">
-                  A
-                </Link>
+      <Query
+        query={CURRENT_USER_QUERY}
+      >
+        {({data, error, loading}) => 
+          <header className={this.props.className}>
+            <Link href="http://aleks.tech">
+              A
+            </Link>
 
-                {data.me &&
-                  <SignOut />
-                }
-              </header>
+            {data.me &&
+              <SignOut />
             }
-          </Query>
+          </header>
         }
-      </Context.Consumer>
+      </Query>
     );
   }
 }
@@ -44,4 +54,4 @@ const StyledHeader = styled(Header)`
   background: #ffffff;
 `;
 
-export default StyledHeader;
+export default connect()(StyledHeader);

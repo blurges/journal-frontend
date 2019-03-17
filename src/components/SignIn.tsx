@@ -53,8 +53,6 @@ class SignIn extends Component<SignInProps & RouteComponentProps> {
             className={this.props.className}
             onSubmit={(event) => this.validate(event, signin)}
           >
-            <p>{this.state.error}</p>
-            <p>NODE_ENV: {process.env.NODE_ENV}</p>
             <Input
               disabled={loading}
               ariaBusy={loading}

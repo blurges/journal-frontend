@@ -94,9 +94,13 @@ export interface CubeProps {
   zoomOut: VoidFunction;
 }
 
+export interface ReduxState {
+  navbarOpen: boolean;
+  snackbarText: string;
+}
+
 export interface AppState {
-  context: ContextProps,
-  dynamicTheme: dynamicThemeType
+  context: ContextProps
 }
 
 export type dynamicThemeType = {
@@ -118,13 +122,17 @@ export type saveToStateType = (e: React.ChangeEvent<HTMLInputElement>) => void;
 export type handleChangeType = (event: React.SyntheticEvent<HTMLTextAreaElement>) => void;
 
 export interface ContextProps {
-  snackBarText: string;
+  snackbarText: string;
   navbarOpen: boolean;
   toggleNavbar: toggleNavbar;
   setSnackbarText: setSnackbarTextType;
 }
 export interface HeaderProps {
   className?: string;
+}
+export interface SnackbarProps {
+  snackbarText: string;
+  setSnackbarText: (text: string) => void; 
 }
 
 export interface EntryInterface {

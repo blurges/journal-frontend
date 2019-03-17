@@ -3,10 +3,14 @@ import { RetryLink } from 'apollo-link-retry';
 import { ApolloLink } from 'apollo-link';
 import { HttpLink } from 'apollo-link-http';
 import { ApolloClient } from 'apollo-client';
+import { onError } from "apollo-link-error";
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import {setContext} from 'apollo-link-context';
 import config from "../config"
 import {PersistentStorage, PersistedData, NormalizedCacheObject} from '../types/index'
+import {navigate} from '@reach/router'
+import store from '../redux'
+import {setSnackbarText} from '../redux/actions'
 
 let uri
 if (process.env.NODE_ENV === "development") {
@@ -63,7 +67,18 @@ const setRequestTokenMiddleware = setContext((operation, previousContext) => {
   }
 })
 
-const link = ApolloLink.from([authMiddleware, setRequestTokenMiddleware, retry, http]);
+const errorLink = onError(({ graphQLErrors, networkError }) => {
+  if (graphQLErrors) {
+    graphQLErrors.map(({ message }) =>
+      store.dispatch(setSnackbarText(message))
+    );
+  }
+  if (networkError) {
+    store.dispatch(setSnackbarText('Connection problem'))
+  }
+});
+
+const link = ApolloLink.from([errorLink, authMiddleware, setRequestTokenMiddleware, retry, http]);
 
 const cache = new InMemoryCache();
 
