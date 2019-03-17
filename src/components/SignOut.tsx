@@ -11,7 +11,7 @@ export class SignOut extends Component {
     const data = { me: null }
     apolloClient.writeQuery({ query: CURRENT_USER_QUERY, data });
     window.localStorage.clear()
-    navigate(`/sign-in`)
+    navigate(`/`)
   };
   render () {
     return (

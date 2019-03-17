@@ -39,6 +39,10 @@ class SignIn extends Component<SignInProps & RouteComponentProps> {
   }
 
   render() {
+    if (this.props.location) {
+      const {key} = this.props.location
+      console.log({key})
+    }
     return (
       <Mutation
         mutation={SIGN_IN_MUTATION}
@@ -53,6 +57,7 @@ class SignIn extends Component<SignInProps & RouteComponentProps> {
             className={this.props.className}
             onSubmit={(event) => this.validate(event, signin)}
           >
+            <p>{}</p>
             <Input
               disabled={loading}
               ariaBusy={loading}

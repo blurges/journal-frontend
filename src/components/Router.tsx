@@ -7,12 +7,8 @@ import styled from 'styled-components'
 export const RouteTransition = (props:any) => (
   <Location>
     {({ location }) => (
-      <TransitionGroup className="transition-group">
+      <TransitionGroup component={null}>
         <CSSTransition key={location.key} classNames="fade" timeout={500}>
-          {/* the only difference between a router animation and
-              any other animation is that you have to pass the
-              location to the router so the old screen renders
-              the "old location" */}
           <Router location={location} className="router">
             {props.children}
           </Router>
@@ -31,7 +27,7 @@ const StyledRouter = styled(RouteTransition)`
 
   .fade-enter.fade-enter-active {
     opacity: 1;
-    transition: opacity 450ms ease-in;
+    transition: opacity 40050ms ease-in;
   }
 `
 

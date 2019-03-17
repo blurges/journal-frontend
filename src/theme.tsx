@@ -3,9 +3,10 @@ import {ThemeInterface} from './types'
 
 const staticTheme = {
   colors: {
-    black: 'black',
-    tealLighter: 'green',
-    tealDark: 'green'
+    black: '#121212',
+    tealDark: '#38a89d',
+    tealLighter: '#a0f0ed',
+    tealLightest: '#e8fffe',
   },
   breakpoints: {
     sm: '600px',
@@ -33,6 +34,7 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
     height: 100%;
     margin: 0;
+    font-size: ${staticTheme.rem};
   }
   #root {
     position: relative;
@@ -40,6 +42,11 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: ${staticTheme.colors.black};
+    font-size: ${staticTheme.em};
+  }
+  #root * {
+    color: inherit;
   }
 `
 

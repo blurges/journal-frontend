@@ -21,8 +21,9 @@ export interface StoreObject {
 export interface ThemeInterface {
   colors: {
     black: string;
-    tealLighter: string;
     tealDark: string;
+    tealLighter: string;
+    tealLightest: string;
   },
   breakpoints: {
     sm: string;
@@ -131,6 +132,7 @@ export interface HeaderProps {
   className?: string;
 }
 export interface SnackbarProps {
+  className?: string;
   snackbarText: string;
   setSnackbarText: (text: string) => void; 
 }
