@@ -100,7 +100,7 @@ const StyledCreateEntry = styled(CreateEntry)`
   list-style-type: none;
   form {
     display: grid;
-    row-gap: 2rem;
+    row-gap: 1rem;
   }
   .actions {
     display: flex;

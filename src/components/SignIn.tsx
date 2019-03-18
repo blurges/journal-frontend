@@ -34,7 +34,8 @@ class SignIn extends Component<SignInProps & RouteComponentProps> {
     action()
   }
 
-  routeAfterSignIn = () => {
+  routeAfterSignIn = (ssth:any) => {
+    console.log({ssth})
     navigate(`/entries`)
   }
 
@@ -52,12 +53,11 @@ class SignIn extends Component<SignInProps & RouteComponentProps> {
         }}
         update={this.routeAfterSignIn}
       >
-        {(signin, {error, loading}) => (
+        {(signin, {loading}) => (
           <form
             className={this.props.className}
             onSubmit={(event) => this.validate(event, signin)}
           >
-            <p>{}</p>
             <Input
               disabled={loading}
               ariaBusy={loading}

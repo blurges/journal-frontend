@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { Mutation } from 'react-apollo';
 import { CURRENT_USER_QUERY } from '../apollo/queries';
-import { SIGN_OUT_MUTATION } from '../apollo/mutations';
 import apolloClient from '../apollo/client';
 import Button from './Button';
 import {navigate} from "@reach/router"

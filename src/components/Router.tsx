@@ -1,5 +1,4 @@
 import React from "react";
-import { render } from "react-dom";
 import { Router, Link, Redirect, Location } from "@reach/router";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import styled from 'styled-components'
@@ -9,7 +8,7 @@ export const RouteTransition = (props:any) => (
     {({ location }) => (
       <TransitionGroup component={null}>
         <CSSTransition key={location.key} classNames="fade" timeout={500}>
-          <Router location={location} className="router">
+          <Router className={props.className} location={location}>
             {props.children}
           </Router>
         </CSSTransition>
@@ -20,6 +19,7 @@ export const RouteTransition = (props:any) => (
 
 
 const StyledRouter = styled(RouteTransition)`
+padding: 1rem;
   .fade-enter {
     opacity: 0;
     z-index: 1;

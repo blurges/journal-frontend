@@ -25,7 +25,7 @@ const StyledButton = styled(Button)`
   width: ${props => props.shrink ? '5rem' : '100%'};
   height: 3rem;
   margin: 0 1rem;
-  border: 1px solid ${props => props.theme.colors.tealLighter};
+  border: 1px solid ${props => props.theme.colors.tealDark};
   padding: 0 1rem;
   overflow-x: hidden;
   background: white;
