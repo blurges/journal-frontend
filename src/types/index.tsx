@@ -18,10 +18,16 @@ export interface StoreObject {
   [storeFieldKey: string]: StoreValue;
 }
 
+export interface LinksContainerProps {
+  className?: string;
+}
+
 export interface ThemeInterface {
   colors: {
     black: string;
+    white: string;
     tealDark: string;
+    tealLight: string;
     tealLighter: string;
     tealLightest: string;
   },
@@ -29,13 +35,14 @@ export interface ThemeInterface {
     sm: string;
     md: string;
   },
+  borderRadius: string;
   rem: string;
   em: string;
 }
 
 export interface LinkProps {
   className?: string;
-  href: string;
+  to: string;
 }
 
 export interface EntryProps {
@@ -64,6 +71,7 @@ export interface InputProps {
   value: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void; 
   required: boolean;
+  autoFocus?: boolean;
 }
 
 // Reach Router typings from https://github.com/DefinitelyTyped/DefinitelyTyped/blob/9b1350a79b61ea91616b7d37433f528f1228ea21/types/reach__router/index.d.ts
@@ -130,7 +138,19 @@ export interface ContextProps {
 }
 export interface HeaderProps {
   className?: string;
+  user: User;
 }
+export interface SignOutProps {
+  user: User;
+}
+
+export interface User {
+  email: string;
+  id: string;
+  name: string;
+  __typename: "User";
+}
+
 export interface SnackbarProps {
   className?: string;
   snackbarText: string;
@@ -189,4 +209,25 @@ export interface CreateEntryProps {
 }
 export interface SignInProps {
   className?: string;
+  user: User;
+}
+export interface SignUpProps {
+  className?: string;
+  user: User;
+}
+export interface AccountProps {
+  className?: string;
+  user: User;
+}
+export interface EntriesProps {
+  className?: string;
+  user: User;
+}
+export interface ResetPasswordProps {
+  className?: string;
+  user: User;
+}
+export interface ForgotPasswordProps {
+  className?: string;
+  user: User;
 }

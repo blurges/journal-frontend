@@ -4,7 +4,9 @@ import {ThemeInterface} from './types'
 const staticTheme = {
   colors: {
     black: '#121212',
+    white: '#ffffff',
     tealDark: '#38a89d',
+    tealLight: '#64d5ca',
     tealLighter: '#a0f0ed',
     tealLightest: '#e8fffe',
   },
@@ -38,7 +40,6 @@ const GlobalStyle = createGlobalStyle`
   }
   #root {
     position: relative;
-    padding-top: 4rem;
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -4,15 +4,15 @@ import Entry from './Entry';
 import InfiniteScroll from './List';
 import Spinner from './Spinner';
 import { ALL_ENTRIES_QUERY } from '../apollo/queries';
-import { EntryInterface, RouteComponentProps } from '../types'
+import { EntryInterface, EntriesProps, RouteComponentProps } from '../types'
 import CreateEntry from './CreateEntry';
+import {Redirect} from '@reach/router'
 
 const perPage:number = 10;
 
-class Entries extends Component<RouteComponentProps> {
-  
+class Entries extends Component<EntriesProps & RouteComponentProps> {
   render() {
-    return (
+    if (this.props.user) {return (
       <Query
         query={ALL_ENTRIES_QUERY}
         variables={{
@@ -78,7 +78,10 @@ class Entries extends Component<RouteComponentProps> {
           );
         }}
       </Query>
-    );
+    );} else {
+      return (
+        <Redirect to="/sign-in" />
+    )}
   }
 }
 

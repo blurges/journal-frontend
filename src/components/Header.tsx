@@ -24,21 +24,12 @@ class Header extends Component<HeaderProps> {
   }
   render() {
     return (
-      <Query
-        query={CURRENT_USER_QUERY}
-      >
-        {({data, error, loading}) => 
-          <header className={this.props.className}>
-            <Link href="http://aleks.tech">
-              A
-            </Link>
-
-            {data.me &&
-              <SignOut />
-            }
-          </header>
-        }
-      </Query>
+      <header className={this.props.className}>
+        <Link to="http://aleks.tech">
+          A
+        </Link>
+        <SignOut user={this.props.user}/>
+      </header>
     );
   }
 }

@@ -17,6 +17,7 @@ class Input extends Component<InputProps> {
         value={this.props.value}
         onChange={this.props.onChange}
         required={this.props.required}
+        autoFocus={this.props.autoFocus}
       >
         {this.props.children}
       </input>
