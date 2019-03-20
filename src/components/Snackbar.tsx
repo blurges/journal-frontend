@@ -3,10 +3,10 @@ import styled from "../theme";
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import store from '../redux';
-import {SnackbarProps, ReduxState} from '../types'
-import { setSnackbarText } from '../redux/actions';
+import {SnackBarProps, ReduxState} from '../types'
+import { setSnackBarText } from '../redux/actions';
 
-class Snackbar extends Component<SnackbarProps> {
+class SnackBar extends Component<SnackBarProps> {
   render() {
     const {snackbarText} = this.props;
 
@@ -17,7 +17,7 @@ class Snackbar extends Component<SnackbarProps> {
             {snackbarText}
           </p>
           <button
-            onClick={() => this.props.setSnackbarText('')}
+            onClick={() => this.props.setSnackBarText('')}
           >
             Dismiss
           </button>
@@ -33,11 +33,11 @@ const mapStateToProps = (state:ReduxState) => {
   }
 }
 
-const mapDispatchToProps = { setSnackbarText }
+const mapDispatchToProps = { setSnackBarText }
 
-const SnackbarWithRedux = connect(mapStateToProps, mapDispatchToProps)(Snackbar);
+const SnackBarWithRedux = connect(mapStateToProps, mapDispatchToProps)(SnackBar);
 
-const StyledSnackbar = styled(SnackbarWithRedux)`
+const StyledSnackBar = styled(SnackBarWithRedux)`
   position: fixed;
   bottom: 0;
   display: flex;
@@ -53,4 +53,4 @@ const StyledSnackbar = styled(SnackbarWithRedux)`
 `;
 
 
-export default StyledSnackbar;
+export default StyledSnackBar;

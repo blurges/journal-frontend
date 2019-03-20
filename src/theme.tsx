@@ -49,6 +49,9 @@ const GlobalStyle = createGlobalStyle`
   #root * {
     color: inherit;
   }
+  svg {
+    max-height: 100%;
+  }
 `
 
 export {

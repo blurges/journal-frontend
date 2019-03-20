@@ -7,6 +7,7 @@ import styled from "../theme";
 import {HeaderProps, ReduxState} from "../types";
 import { connect } from 'react-redux'
 import store from '../redux';
+import { ReactComponent as ALogo } from '../assets/ALogo.svg';
 
 class Header extends Component<HeaderProps> {
   constructor(props:HeaderProps) {
@@ -26,7 +27,7 @@ class Header extends Component<HeaderProps> {
     return (
       <header className={this.props.className}>
         <Link to="http://aleks.tech">
-          A
+          <ALogo />
         </Link>
         <SignOut user={this.props.user}/>
       </header>
@@ -41,7 +42,7 @@ const StyledHeader = styled(Header)`
   width: 100%;
   height: 4rem;
   display: grid;
-  grid-template-columns: 2;
+  grid-template-columns: 4rem auto;
   justify-content: space-between;
   background: #ffffff;
   background: ${props => props.theme.colors.tealLighter};

@@ -17,7 +17,8 @@ class LinkComponent extends Component<LinkProps> {
 }
 
 const StyledLink = styled(LinkComponent)`
-  flex: 1;
+  height: 100%;
+  max-height: 100%;
   border-radius: ${props => props.theme.borderRadius};
   border: 1px solid ${props => props.theme.colors.tealLightest};
   padding: 1em 1.5em;

@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import Header from '../components/Header';
 import { Query } from "react-apollo";
 import {CURRENT_USER_QUERY} from '../apollo/queries'
+import Home from './Home';
 import SignIn from './SignIn';
 import ForgotPassword from './ForgotPassword';
 import ResetPassword from './ResetPassword';
 import SignUp from './SignUp';
 import Entries from './Entries';
 import Account from './Account';
-import Snackbar from './Snackbar';
+import SnackBar from './SnackBar';
 import Router from "./Router"
 import {navigate} from "@reach/router"
 
@@ -21,6 +22,7 @@ export class Auth extends Component{
           return <>
             <Header user={me}/>
             <Router>
+              <Home user={me} path="/" />
               <SignIn user={me} path="/sign-in" />
               <ForgotPassword user={me} path="/forgot-password" />
               <ResetPassword user={me} path="/reset-password" />
@@ -28,7 +30,7 @@ export class Auth extends Component{
               <Entries user={me} path="/entries" />
               <Account user={me} path="/account" />
             </Router>
-            <Snackbar />
+            <SnackBar />
           </>
         }}
       </Query>

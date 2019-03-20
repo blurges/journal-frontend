@@ -126,7 +126,7 @@ export type dynamicThemeType = {
 }
 
 export type toggleNavbar = (e: React.MouseEvent<HTMLElement>) => void;
-export type setSnackbarTextType = (text: string) => void;
+export type setSnackBarTextType = (text: string) => void;
 export type saveToStateType = (e: React.ChangeEvent<HTMLInputElement>) => void;
 export type handleChangeType = (event: React.SyntheticEvent<HTMLTextAreaElement>) => void;
 
@@ -134,7 +134,7 @@ export interface ContextProps {
   snackbarText: string;
   navbarOpen: boolean;
   toggleNavbar: toggleNavbar;
-  setSnackbarText: setSnackbarTextType;
+  setSnackBarText: setSnackBarTextType;
 }
 export interface HeaderProps {
   className?: string;
@@ -151,10 +151,10 @@ export interface User {
   __typename: "User";
 }
 
-export interface SnackbarProps {
+export interface SnackBarProps {
   className?: string;
   snackbarText: string;
-  setSnackbarText: (text: string) => void; 
+  setSnackBarText: (text: string) => void; 
 }
 
 export interface EntryInterface {
