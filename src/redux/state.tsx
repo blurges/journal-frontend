@@ -2,7 +2,7 @@ import {ReduxState} from '../types'
 
 export const initialState:ReduxState = {
   navbarOpen: false,
-  snackbarText: ''
+  alertText: ''
 }
 
 export default initialState

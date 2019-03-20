@@ -9,7 +9,7 @@ import ResetPassword from './ResetPassword';
 import SignUp from './SignUp';
 import Entries from './Entries';
 import Account from './Account';
-import SnackBar from './SnackBar';
+import Alert from './Alert';
 import Router from "./Router"
 import {navigate} from "@reach/router"
 
@@ -30,7 +30,7 @@ export class Auth extends Component{
               <Entries user={me} path="/entries" />
               <Account user={me} path="/account" />
             </Router>
-            <SnackBar />
+            <Alert />
           </>
         }}
       </Query>

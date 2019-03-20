@@ -7,7 +7,7 @@ export const rootReducer = (state = initialState, action: { text:string, type:st
     case 'SET_SNACKBAR_TEXT':
       return {
         ...state,
-        snackbarText: action.text
+        alertText: action.text
       }
     case 'TOGGLE_NAVBAR':
       return {

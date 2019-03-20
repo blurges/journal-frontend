@@ -109,7 +109,7 @@ export interface CubeProps {
 
 export interface ReduxState {
   navbarOpen: boolean;
-  snackbarText: string;
+  alertText: string;
 }
 
 export interface AppState {
@@ -130,15 +130,15 @@ export type dynamicThemeType = {
 }
 
 export type toggleNavbar = (e: React.MouseEvent<HTMLElement>) => void;
-export type setSnackBarTextType = (text: string) => void;
+export type setAlertTextType = (text: string) => void;
 export type saveToStateType = (e: React.ChangeEvent<HTMLInputElement>) => void;
 export type handleChangeType = (event: React.SyntheticEvent<HTMLTextAreaElement>) => void;
 
 export interface ContextProps {
-  snackbarText: string;
+  alertText: string;
   navbarOpen: boolean;
   toggleNavbar: toggleNavbar;
-  setSnackBarText: setSnackBarTextType;
+  setAlertText: setAlertTextType;
 }
 export interface HeaderProps {
   className?: string;
@@ -156,10 +156,10 @@ export interface User {
   __typename: "User";
 }
 
-export interface SnackBarProps {
+export interface AlertProps {
   className?: string;
-  snackbarText: string;
-  setSnackBarText: (text: string) => void; 
+  alertText: string;
+  setAlertText: (text: string) => void; 
 }
 
 export interface EntryInterface {

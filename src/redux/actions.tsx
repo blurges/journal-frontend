@@ -1,4 +1,4 @@
-export const setSnackBarText = (text:string) => ({
+export const setAlertText = (text:string) => ({
   type: 'SET_SNACKBAR_TEXT',
   text
 })
@@ -8,4 +8,7 @@ export const toggleNavbar = (navbarOpen:boolean) => ({
   navbarOpen
 })
 
-export default setSnackBarText
+export default {
+  setAlertText,
+  toggleNavbar
+}

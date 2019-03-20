@@ -3,21 +3,21 @@ import styled from "../theme";
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import store from '../redux';
-import {SnackBarProps, ReduxState} from '../types'
-import { setSnackBarText } from '../redux/actions';
+import {AlertProps, ReduxState} from '../types'
+import { setAlertText } from '../redux/actions';
 
-class SnackBar extends Component<SnackBarProps> {
+class Alert extends Component<AlertProps> {
   render() {
-    const {snackbarText} = this.props;
+    const {alertText} = this.props;
 
-    if (snackbarText) {
+    if (alertText) {
       return (
         <section className={this.props.className}>
           <p>
-            {snackbarText}
+            {alertText}
           </p>
           <button
-            onClick={() => this.props.setSnackBarText('')}
+            onClick={() => this.props.setAlertText('')}
           >
             Dismiss
           </button>
@@ -29,15 +29,15 @@ class SnackBar extends Component<SnackBarProps> {
 
 const mapStateToProps = (state:ReduxState) => {
   return {
-    snackbarText: state.snackbarText
+    alertText: state.alertText
   }
 }
 
-const mapDispatchToProps = { setSnackBarText }
+const mapDispatchToProps = { setAlertText }
 
-const SnackBarWithRedux = connect(mapStateToProps, mapDispatchToProps)(SnackBar);
+const AlertWithRedux = connect(mapStateToProps, mapDispatchToProps)(Alert);
 
-const StyledSnackBar = styled(SnackBarWithRedux)`
+const StyledAlert = styled(AlertWithRedux)`
   position: fixed;
   bottom: 0;
   display: flex;
@@ -53,4 +53,4 @@ const StyledSnackBar = styled(SnackBarWithRedux)`
 `;
 
 
-export default StyledSnackBar;
+export default StyledAlert;
