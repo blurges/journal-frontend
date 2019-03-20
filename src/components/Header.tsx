@@ -40,9 +40,11 @@ const StyledHeader = styled(Header)`
   top: 0;
   width: 100%;
   height: 4rem;
-  display: flex;
+  display: grid;
+  grid-template-columns: 2;
   justify-content: space-between;
   background: #ffffff;
+  background: ${props => props.theme.colors.tealLighter};
 `;
 
 export default connect()(StyledHeader);

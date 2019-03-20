@@ -10,7 +10,10 @@ export const RouteTransition = (props:any) => (
       return (
       <TransitionGroup component={null} className="page-main">
         <CSSTransition key={location.key} classNames="fade" timeout={500}>
-          <Router className={props.className} location={location}>
+          <Router 
+            className={props.className}
+            location={location}
+          >
             {props.children}
           </Router>
         </CSSTransition>
