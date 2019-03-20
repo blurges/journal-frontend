@@ -25,7 +25,7 @@ export class Auth extends Component{
               <Home user={me} path="/" />
               <SignIn user={me} path="/sign-in" />
               <ForgotPassword user={me} path="/forgot-password" />
-              <ResetPassword user={me} path="/reset-password" />
+              <ResetPassword user={me} path="/reset-password/:resetToken" />
               <SignUp user={me} path="/sign-up" />
               <Entries user={me} path="/entries" />
               <Account user={me} path="/account" />

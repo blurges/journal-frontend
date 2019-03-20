@@ -234,6 +234,7 @@ export interface EntriesProps {
 }
 export interface ResetPasswordProps {
   className?: string;
+  resetToken?: string;
   user: User;
 }
 export interface ForgotPasswordProps {

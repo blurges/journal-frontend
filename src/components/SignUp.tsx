@@ -68,8 +68,6 @@ class SignUp extends Component<SignUpProps & RouteComponentProps> {
           <main className={this.props.className}>
             <form
               onSubmit={(event) => this.validate(event, signup)}
-              data-test="sign-up-form"
-              method="post"
             >
               <Input
                 disabled={loading}
