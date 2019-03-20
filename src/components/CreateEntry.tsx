@@ -7,9 +7,11 @@ import DynamicTextarea from './DynamicTextarea';
 import { ApolloConsumer } from 'react-apollo';
 import { CREATE_ENTRY_MUTATION } from '../apollo/mutations';
 import { handleChangeType, CreateEntryProps } from '../types'
+import uuidv1 from 'uuid/v1'
 
 class CreateEntry extends Component<CreateEntryProps> {
   state = {
+    id: uuidv1(),
     title: '',
     body: ''
   };
