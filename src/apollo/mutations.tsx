@@ -2,12 +2,12 @@ import gql from "graphql-tag";
 
 export const CREATE_ENTRY_MUTATION = gql`
   mutation CREATE_ENTRY_MUTATION(
-    $id: String!
+    $tempId: String!
     $title: String!
     $body: String!
   ) {
     createEntry(
-      id: $id
+      tempId: $tempId
       title: $title
       body: $body
     ) {

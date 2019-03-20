@@ -11,7 +11,7 @@ import uuidv1 from 'uuid/v1'
 
 class CreateEntry extends Component<CreateEntryProps> {
   state = {
-    id: uuidv1(),
+    tempId: uuidv1(),
     title: '',
     body: ''
   };
