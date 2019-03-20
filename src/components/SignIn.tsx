@@ -48,9 +48,8 @@ class SignIn extends Component<SignInProps & RouteComponentProps> {
         refetchQueries={[{query: CURRENT_USER_QUERY}]}
       >
         {(signin, {loading}) => (
-          <>
+          <main className={this.props.className}>
             <form
-              className={this.props.className}
               onSubmit={(event) => this.validate(event, signin)}
             >
               <Input
@@ -93,7 +92,7 @@ class SignIn extends Component<SignInProps & RouteComponentProps> {
                 Forgot Password
               </Link>
             </LinksContainer>
-          </>
+          </main>
         )}
       </Mutation>
     )} else return (
@@ -103,10 +102,17 @@ class SignIn extends Component<SignInProps & RouteComponentProps> {
 }
 
 const StyledSignIn = styled(SignIn)`
-  width: 100%;
-  max-width: ${props => props.theme.breakpoints.sm};
-  display: grid;
-  row-gap: 2rem;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  form {
+    width: 100%;
+    max-width: ${props => props.theme.breakpoints.sm};
+    display: grid;
+    row-gap: 2rem;
+  }
 `
 
 export default StyledSignIn;
