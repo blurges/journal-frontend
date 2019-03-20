@@ -113,7 +113,7 @@ export interface ReduxState {
 }
 
 export interface AppState {
-  context: ContextProps
+  cacheRestored: boolean;
 }
 
 export type dynamicThemeType = {

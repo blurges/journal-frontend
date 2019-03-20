@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import { Query } from "react-apollo";
-import {CURRENT_USER_QUERY} from '../apollo/queries'
-import Link from './Link'
 import SignOut from './SignOut'
 import styled from "../theme";
 import {HeaderProps, ReduxState} from "../types";

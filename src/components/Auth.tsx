@@ -11,14 +11,16 @@ import Entries from './Entries';
 import Account from './Account';
 import Alert from './Alert';
 import Router from "./Router"
-import {navigate} from "@reach/router"
 
 export class Auth extends Component{
   render () {
     return (
-      <Query query={CURRENT_USER_QUERY}>
+      <Query
+        query={CURRENT_USER_QUERY}
+      >
         {({ data }) => {
           const {me} = data
+          console.log({data, me})
           return <>
             <Header user={me}/>
             <Router>

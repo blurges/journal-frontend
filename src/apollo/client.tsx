@@ -1,4 +1,4 @@
-import { persistCache } from 'apollo-cache-persist';
+import { CachePersistor } from 'apollo-cache-persist';
 import { RetryLink } from 'apollo-link-retry';
 import { ApolloLink } from 'apollo-link';
 import { HttpLink } from 'apollo-link-http';
@@ -82,7 +82,7 @@ const link = ApolloLink.from([errorLink, authMiddleware, setRequestTokenMiddlewa
 
 const cache = new InMemoryCache();
 
-persistCache({ 
+export const persistor = new CachePersistor({
   cache,
   storage: window.localStorage as PersistentStorage<PersistedData<NormalizedCacheObject>>
 })
