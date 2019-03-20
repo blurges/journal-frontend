@@ -97,7 +97,7 @@ class SignIn extends Component<SignInProps & RouteComponentProps> {
         )}
       </Mutation>
     )} else return (
-      <Redirect to="/entries" />
+      <Redirect noThrow to="/entries" />
     );
   }
 }

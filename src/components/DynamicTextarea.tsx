@@ -32,7 +32,7 @@ const StyledTextarea = styled(DynamicTextarea)`
   border-top-right-radius: ${props => props.theme.borderRadius};
   padding: 1rem;
   background: white;
-  font-family: 'Merriweather Regular';
+  font-family: 'Merriweather';
   font-size: 2rem;
   resize: none;
   transition: all 0.5s;

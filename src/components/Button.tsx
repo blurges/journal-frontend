@@ -29,7 +29,7 @@ const StyledButton = styled(Button)`
   padding: 0 1rem;
   overflow-x: hidden;
   background: white;
-  font-family: 'Lato Regular';
+  font-family: 'Lato';
   font-size: 1.5em;
   text-transform: uppercase;
   transition: all 0.3s;

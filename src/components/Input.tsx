@@ -32,7 +32,7 @@ const StyledButton = styled(Input)`
   border: none;
   padding: 1rem;
   background: white;
-  font-family: 'Merriweather Regular';
+  font-family: 'Merriweather';
   font-size: 2rem;
   box-shadow: none;
 `;

@@ -145,6 +145,7 @@ export interface HeaderProps {
   user: User;
 }
 export interface SignOutProps {
+  className?: string;
   user: User;
 }
 

@@ -80,7 +80,7 @@ class Entries extends Component<EntriesProps & RouteComponentProps> {
       </Query>
     );} else {
       return (
-        <Redirect to="/sign-in" />
+        <Redirect noThrow to="/sign-in" />
     )}
   }
 }

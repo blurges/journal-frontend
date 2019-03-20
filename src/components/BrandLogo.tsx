@@ -19,6 +19,10 @@ class BrandLogo extends Component<StyledComponentProps> {
 const StyledLink = styled(BrandLogo)`
   width: 4rem;
   height: 4rem;
+  border: 1px solid ${props => props.theme.colors.tealLighter};
+  :hover {
+    border: 1px solid ${props => props.theme.colors.tealDark};
+  }
   svg {
     padding: 0.5rem 1rem;
   }
