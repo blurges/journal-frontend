@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { Mutation } from "react-apollo";
 import {SIGN_IN_MUTATION} from '../apollo/mutations';
-import { RouteComponentProps, SignInProps } from '../types';
+import { RouteComponentProps, HomeProps } from '../types';
 import { Redirect } from "@reach/router";
 import Link from './Link'
 import styled from "styled-components";
 import LinksContainer from "./LinksContainer";
 
-class SignIn extends Component<SignInProps & RouteComponentProps> {
+class Home extends Component<HomeProps & RouteComponentProps> {
   render() {
     if (!this.props.user) {return (
-      <>
+      <main className={this.props.className}>
         <h1>Journal</h1>
         <LinksContainer>
           <Link to="/sign-up">
@@ -20,18 +20,21 @@ class SignIn extends Component<SignInProps & RouteComponentProps> {
             Sign In
           </Link>
         </LinksContainer>
-      </>
+      </main>
     )} else return (
       <Redirect to="/entries" />
     );
   }
 }
 
-const StyledSignIn = styled(SignIn)`
+const StyledSignIn = styled(Home)`
   width: 100%;
   max-width: ${props => props.theme.breakpoints.sm};
-  display: grid;
-  row-gap: 2rem;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `
 
 export default StyledSignIn;

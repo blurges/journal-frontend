@@ -7,7 +7,7 @@ import styled from "../theme";
 import {HeaderProps, ReduxState} from "../types";
 import { connect } from 'react-redux'
 import store from '../redux';
-import { ReactComponent as ALogo } from '../assets/ALogo.svg';
+import BrandLogo from './BrandLogo';
 
 class Header extends Component<HeaderProps> {
   constructor(props:HeaderProps) {
@@ -26,9 +26,7 @@ class Header extends Component<HeaderProps> {
   render() {
     return (
       <header className={this.props.className}>
-        <Link to="http://aleks.tech">
-          <ALogo />
-        </Link>
+        <BrandLogo />
         <SignOut user={this.props.user}/>
       </header>
     );

@@ -50,6 +50,10 @@ export interface EntryProps {
   entry: EntryInterface;
 }
 
+export interface StyledComponentProps {
+  className?: string;
+}
+
 export interface ButtonProps {
   className?: string;
   type: string;
@@ -208,6 +212,10 @@ export interface CreateEntryProps {
   className?: string;
 }
 export interface SignInProps {
+  className?: string;
+  user: User;
+}
+export interface HomeProps {
   className?: string;
   user: User;
 }
