@@ -6,16 +6,25 @@ import Button from './Button';
 import DynamicTextarea from './DynamicTextarea';
 import { ApolloConsumer } from 'react-apollo';
 import { CREATE_ENTRY_MUTATION } from '../apollo/mutations';
-import { handleChangeType, CreateEntryProps } from '../types'
-import uuidv1 from 'uuid/v1'
+import { handleChangeType, CreateEntryProps, NormalizedCacheObject } from '../types'
+
+const uuidv1 = require('uuid/v1')
 
 class CreateEntry extends Component<CreateEntryProps> {
   state = {
+    __typename: 'Entry',
+    id: '',
     tempId: uuidv1(),
     title: '',
     body: ''
   };
 
+  componentWillMount () {
+    console.log(this.state)
+  }
+  componentDidMount () {
+    console.log(this.state)
+  }
   handleChange:handleChangeType = e => {
     if (e.target) {
       this.setState({
@@ -23,18 +32,45 @@ class CreateEntry extends Component<CreateEntryProps> {
       })
     }
   };
-
-  update = (cache:any, payload:any) => {
+  
+  create = (cache:any, payload:any) => {
+    console.log(1)
+    console.log({cache, payload})
     // manually update the cache on the client, so it matches the server
     // 1. Read the cache for the entries we want
-    const {id, __typename} = payload.data.createEntry
+    const {__typename, id, tempId, title, body} = payload.data.createEntry
     const data = cache.readQuery({ query: ALL_ENTRIES_QUERY });
     // 2. Filter the deleted entry out of the page
     data.entries = [{
-      id,
       __typename,
-      body: this.state.body,
-      title: this.state.title
+      id,
+      tempId,
+      body,
+      title
+    } , ...data.entries]
+    data.entriesConnection.aggregate.count++
+    // 3. Put the entries back!
+    cache.writeQuery({ query: ALL_ENTRIES_QUERY, data });
+    this.setState({
+      title: '',
+      body: ''
+    })
+  };
+
+  update = (cache:any, payload:any) => {
+    console.log(2)
+    console.log({cache, payload})
+    // manually update the cache on the client, so it matches the server
+    // 1. Read the cache for the entries we want
+    const {__typename, id, tempId, title, body} = payload.data.createEntry
+    const data = cache.readQuery({ query: ALL_ENTRIES_QUERY });
+    // 2. Filter the deleted entry out of the page
+    data.entries = [{
+      __typename,
+      id,
+      tempId,
+      body,
+      title
     } , ...data.entries]
     data.entriesConnection.aggregate.count++
     // 3. Put the entries back!
@@ -53,6 +89,10 @@ class CreateEntry extends Component<CreateEntryProps> {
             mutation={CREATE_ENTRY_MUTATION}
             variables={this.state}
             update={this.update}
+            optimisticResponse={{
+              __typename: "Mutation",
+              createEntry: this.state
+            }}
           >
             {(createEntry, { loading, error }) => (
               // debounce, throttle

@@ -12,6 +12,9 @@ export const CREATE_ENTRY_MUTATION = gql`
       body: $body
     ) {
       id
+      tempId
+      title
+      body
     }
   }
 `;
