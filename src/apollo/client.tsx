@@ -80,7 +80,14 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 
 const link = ApolloLink.from([errorLink, authMiddleware, setRequestTokenMiddleware, retry, http]);
 
-const cache = new InMemoryCache();
+const cache = new InMemoryCache({
+  dataIdFromObject: (object:any) => {
+    switch (object.__typename) {
+      case 'Entry': return object.id || object.tempId; // match Entry on tempId if id isn't available yet
+      default: return object.id || object._id; // fall back to `id` and `_id` for all other types
+    }
+  }
+});
 
 export const persistor = new CachePersistor({
   cache,

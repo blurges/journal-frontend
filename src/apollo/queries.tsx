@@ -4,6 +4,7 @@ export const ALL_ENTRIES_QUERY = gql`
   query ALL_ENTRIES_QUERY($skip: Int = 0, $first: Int = 10) {
     entries(first: $first, skip: $skip, orderBy: createdAt_DESC) {
       id
+      tempId
       title
       body
     },
