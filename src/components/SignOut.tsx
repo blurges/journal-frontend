@@ -11,7 +11,6 @@ export class SignOut extends Component<SignOutProps> {
     user.me = null
     apolloClient.writeQuery({ query: CURRENT_USER_QUERY, data: user });
     const entries = apolloClient.readQuery({ query: ALL_ENTRIES_QUERY });
-    console.log({entries})
     // entries.me = null
     // apolloClient.writeQuery({ query: CURRENT_USER_QUERY, data: entries });
   };

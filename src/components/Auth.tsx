@@ -20,7 +20,6 @@ export class Auth extends Component{
       >
         {({ data }) => {
           const {me} = data
-          console.log({data, me})
           return <>
             <Header user={me}/>
             <Router>

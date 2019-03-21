@@ -6,7 +6,6 @@ import styled from 'styled-components'
 export const RouteTransition = (props:any) => (
   <Location>
     {({ location }) => {
-      console.log({location})
       return (
       <TransitionGroup component={null} className="page-main">
         <CSSTransition key={location.key} classNames="fade" timeout={500}>

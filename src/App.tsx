@@ -9,8 +9,8 @@ import { Provider } from 'react-redux'
 import apolloClient, {persistor} from './apollo/client';
 
 class App extends Component<{}, AppState> {
-  constructor() {
-    super({})
+  constructor(props:any) {
+    super(props)
     this.state = {
       cacheRestored: false,
     }
