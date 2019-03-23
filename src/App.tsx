@@ -15,6 +15,7 @@ class App extends Component<{}, AppState> {
       cacheRestored: false,
     }
   }
+
   componentDidMount() {
     persistor.restore()
       .then(() => this.setState({ cacheRestored: true }))

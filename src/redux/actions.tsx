@@ -1,6 +1,8 @@
-export const setAlertText = (text:string) => ({
-  type: 'SET_SNACKBAR_TEXT',
-  text
+import {setAlertOptionsParameters} from '../types'
+
+export const setAlertOptions = (options:setAlertOptionsParameters) => ({
+    type: 'SET_ALERT_OPTIONS',
+    options
 })
 
 export const toggleNavbar = (navbarOpen:boolean) => ({
@@ -9,6 +11,6 @@ export const toggleNavbar = (navbarOpen:boolean) => ({
 })
 
 export default {
-  setAlertText,
+  setAlertOptions,
   toggleNavbar
 }

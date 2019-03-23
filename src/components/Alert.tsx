@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import store from '../redux';
 import {AlertProps, ReduxState} from '../types'
-import { setAlertText } from '../redux/actions';
+import { setAlertOptions } from '../redux/actions';
 
 class Alert extends Component<AlertProps> {
   render() {
@@ -17,7 +17,10 @@ class Alert extends Component<AlertProps> {
             {alertText}
           </p>
           <button
-            onClick={() => this.props.setAlertText('')}
+            onClick={() => this.props.setAlertOptions({
+              text: '',
+              type: 'info'
+            })}
           >
             Dismiss
           </button>
@@ -29,11 +32,13 @@ class Alert extends Component<AlertProps> {
 
 const mapStateToProps = (state:ReduxState) => {
   return {
-    alertText: state.alertText
+    alertText: state.alertText,
+    alertType: state.alertType,
+    alertTimeout: state.alertTimeout
   }
 }
 
-const mapDispatchToProps = { setAlertText }
+const mapDispatchToProps = { setAlertOptions }
 
 const AlertWithRedux = connect(mapStateToProps, mapDispatchToProps)(Alert);
 

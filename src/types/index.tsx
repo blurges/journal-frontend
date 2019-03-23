@@ -109,6 +109,8 @@ export interface CubeProps {
 
 export interface ReduxState {
   navbarOpen: boolean;
+  alertType: 'info' | 'error';
+  alertTimeout: number;
   alertText: string;
 }
 
@@ -130,16 +132,10 @@ export type dynamicThemeType = {
 }
 
 export type toggleNavbar = (e: React.MouseEvent<HTMLElement>) => void;
-export type setAlertTextType = (text: string) => void;
+export type setAlertOptionsType = (options: setAlertOptionsParameters) => void;
 export type saveToStateType = (e: React.ChangeEvent<HTMLInputElement>) => void;
 export type handleChangeType = (event: React.SyntheticEvent<HTMLTextAreaElement>) => void;
 
-export interface ContextProps {
-  alertText: string;
-  navbarOpen: boolean;
-  toggleNavbar: toggleNavbar;
-  setAlertText: setAlertTextType;
-}
 export interface HeaderProps {
   className?: string;
   user: User;
@@ -159,7 +155,9 @@ export interface User {
 export interface AlertProps {
   className?: string;
   alertText: string;
-  setAlertText: (text: string) => void; 
+  alertType: 'info' | 'error';
+  alertTimeout: number;
+  setAlertOptions: (options: setAlertOptionsParameters) => void; 
 }
 
 export interface EntryInterface {
@@ -212,9 +210,15 @@ export interface InfiniteScrollProps {
 export interface CreateEntryProps {
   className?: string;
 }
+export interface setAlertOptionsParameters {
+  text: string;
+  type: 'info' | 'error';
+  timeout?: number;
+}
 export interface SignInProps {
   className?: string;
   user: User;
+  setAlertOptions: (options:setAlertOptionsParameters) => void; 
 }
 export interface HomeProps {
   className?: string;

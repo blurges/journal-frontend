@@ -10,7 +10,7 @@ import config from "../config"
 import {PersistentStorage, PersistedData, NormalizedCacheObject} from '../types/index'
 import {navigate} from '@reach/router'
 import store from '../redux'
-import {setAlertText} from '../redux/actions'
+import {setAlertOptions} from '../redux/actions'
 
 let uri
 if (process.env.NODE_ENV === "development") {
@@ -68,13 +68,11 @@ const setRequestTokenMiddleware = setContext((operation, previousContext) => {
 })
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
-  if (graphQLErrors) {
-    graphQLErrors.map(({ message }) =>
-      store.dispatch(setAlertText(message))
-    );
-  }
   if (networkError) {
-    store.dispatch(setAlertText('Connection problem'))
+    store.dispatch(setAlertOptions({
+      text: 'Connection problem',
+      type: 'error'
+    }))
   }
 });
 

@@ -9,6 +9,8 @@ import Button from "./Button";
 import LinksContainer from "./LinksContainer";
 import Input from "./Input";
 import { CURRENT_USER_QUERY } from '../apollo/queries';
+import {setAlertOptions} from '../redux/actions'
+import { connect } from 'react-redux'
 
 class SignIn extends Component<SignInProps & RouteComponentProps> {
   state = {
@@ -29,10 +31,9 @@ class SignIn extends Component<SignInProps & RouteComponentProps> {
   };
   validate = (event:any, action:any) => {
     event.preventDefault()
+    event.stopPropagation()
     if (!this.state.email || !this.state.password) {
-      this.setState({
-        error: 'Missing'
-      })
+      console.log('Form contents are not valid, SignIn.tsx:35')
     }
     action()
   }
@@ -46,6 +47,7 @@ class SignIn extends Component<SignInProps & RouteComponentProps> {
           password: this.state.password
         }}
         refetchQueries={[{query: CURRENT_USER_QUERY}]}
+        onError={(r) => {console.log({r})}}
       >
         {(signin, {loading}) => (
           <main className={this.props.className}>
@@ -101,7 +103,11 @@ class SignIn extends Component<SignInProps & RouteComponentProps> {
   }
 }
 
-const StyledSignIn = styled(SignIn)`
+const mapDispatchToProps = { setAlertOptions }
+
+const SignInWithRedux = connect(null, mapDispatchToProps)(SignIn);
+
+const StyledSignIn = styled(SignInWithRedux)`
   min-height: 100%;
   display: flex;
   flex-direction: column;
