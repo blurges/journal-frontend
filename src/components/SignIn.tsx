@@ -9,7 +9,7 @@ import Button from "./Button";
 import LinksContainer from "./LinksContainer";
 import Input from "./Input";
 import { CURRENT_USER_QUERY } from '../apollo/queries';
-import {setAlertOptions} from '../redux/actions'
+import {handleGraphqlErrors} from '../redux/actions'
 import { connect } from 'react-redux'
 
 class SignIn extends Component<SignInProps & RouteComponentProps> {
@@ -47,7 +47,7 @@ class SignIn extends Component<SignInProps & RouteComponentProps> {
           password: this.state.password
         }}
         refetchQueries={[{query: CURRENT_USER_QUERY}]}
-        onError={(r) => {console.log({r})}}
+        onError={this.props.handleGraphqlErrors}
       >
         {(signin, {loading}) => (
           <main className={this.props.className}>
@@ -103,7 +103,7 @@ class SignIn extends Component<SignInProps & RouteComponentProps> {
   }
 }
 
-const mapDispatchToProps = { setAlertOptions }
+const mapDispatchToProps = { handleGraphqlErrors }
 
 const SignInWithRedux = connect(null, mapDispatchToProps)(SignIn);
 

@@ -1,5 +1,6 @@
 import { StoreValue } from 'apollo-utilities';
 import { Location as HLocation } from "history";
+import {ApolloError} from 'apollo-client'
 
 export interface PersistentStorage<T> {
   getItem: (key: string) => Promise<T> | T;
@@ -218,7 +219,7 @@ export interface setAlertOptionsParameters {
 export interface SignInProps {
   className?: string;
   user: User;
-  setAlertOptions: (options:setAlertOptionsParameters) => void; 
+  handleGraphqlErrors: (payload:ApolloError) => void; 
 }
 export interface HomeProps {
   className?: string;

@@ -8,7 +8,6 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import {setContext} from 'apollo-link-context';
 import config from "../config"
 import {PersistentStorage, PersistedData, NormalizedCacheObject} from '../types/index'
-import {navigate} from '@reach/router'
 import store from '../redux'
 import {setAlertOptions} from '../redux/actions'
 
