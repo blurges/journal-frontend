@@ -1,7 +1,9 @@
-# Journal
+# <a href="https://journal.aleks.tech" target="_blank">Journalling app</a>
 
-## Tech
+Frontend repo
 - TypeScript
 - React
-- GraphQL
 - styled-components
+- Apollo GraphQL
+
+Progressive Web App, available offline.
