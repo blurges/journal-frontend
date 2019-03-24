@@ -31,7 +31,7 @@ class Header extends Component<HeaderProps> {
 }
 
 const StyledHeader = styled(Header)`
-  position: absolute;
+  position: fixed;
   z-index: 1;
   top: 0;
   width: 100%;

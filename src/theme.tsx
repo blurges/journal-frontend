@@ -88,17 +88,15 @@ const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
-  html, body, #root {
-    width: 100%;
-    height: 100%;
-    margin: 0;
+  html {
     font-size: ${staticTheme.rem};
   }
+  body {
+    margin: 0;
+  }
   #root {
+    min-height: 100vh;
     position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     color: ${staticTheme.colors.black};
     font-size: ${staticTheme.em};
     font-family: 'Lato';

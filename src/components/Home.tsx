@@ -30,7 +30,6 @@ class Home extends Component<HomeProps & RouteComponentProps> {
 const StyledSignIn = styled(Home)`
   width: 100%;
   max-width: ${props => props.theme.breakpoints.sm};
-  min-height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;

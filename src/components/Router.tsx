@@ -22,11 +22,11 @@ export const RouteTransition = (props:any) => (
 );
 
 const StyledRouter = styled(RouteTransition)`
+  height: calc(100% - 4rem);
   position: absolute;
-  top: 0;
+  top: 4rem;
   right: 0;
   left: 0;
-  margin: 4rem 0 0 0;
   padding: 1rem;
   display: flex;
   flex-direction: column;

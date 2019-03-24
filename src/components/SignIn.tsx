@@ -108,11 +108,18 @@ const mapDispatchToProps = { handleGraphqlErrors }
 const SignInWithRedux = connect(null, mapDispatchToProps)(SignIn);
 
 const StyledSignIn = styled(SignInWithRedux)`
-  min-height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  min-height: 100%;
+  ::before, ::after {
+    -webkit-box-flex: 1;
+    box-flex: 1;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+    content: '';
+    display: block;
+    height: 24px;
+  }
   form {
     width: 100%;
     max-width: ${props => props.theme.breakpoints.sm};
