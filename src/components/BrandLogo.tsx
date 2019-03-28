@@ -25,6 +25,7 @@ const StyledLink = styled(BrandLogo)`
   }
   svg {
     padding: 0.5rem 1rem;
+    display: block;
   }
 `;
 

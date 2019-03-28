@@ -4,13 +4,13 @@ import Link from './Link';
 import { Mutation } from 'react-apollo';
 import { RESET_MUTATION } from '../apollo/mutations';
 import { CURRENT_USER_QUERY } from '../apollo/queries';
-import styled from '../theme'
 import LinksContainer from "./LinksContainer";
 import Button from "./Button";
 import Input from "./Input";
 import { Redirect } from '@reach/router';
+import AuthFormStyles from './AuthFormStyles';
 
-class ResetPassword extends Component<RouteComponentProps & ResetPasswordProps> {
+export  class ResetPassword extends Component<RouteComponentProps & ResetPasswordProps> {
   state = {
     password: '',
     confirmPassword: '',
@@ -93,18 +93,6 @@ class ResetPassword extends Component<RouteComponentProps & ResetPasswordProps> 
   }
 }
 
-const StyledResetPassword = styled(ResetPassword)`
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  form {
-    width: 100%;
-    max-width: ${props => props.theme.breakpoints.sm};
-    display: grid;
-    row-gap: 2rem;
-  }
-`
+const StyledResetPassword = AuthFormStyles(ResetPassword)
 
 export default StyledResetPassword;

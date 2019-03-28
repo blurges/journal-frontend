@@ -11,8 +11,9 @@ import Input from "./Input";
 import { CURRENT_USER_QUERY } from '../apollo/queries';
 import {handleGraphqlErrors} from '../redux/actions'
 import { connect } from 'react-redux'
+import AuthFormStyles from './AuthFormStyles';
 
-class SignIn extends Component<SignInProps & RouteComponentProps> {
+export class SignIn extends Component<SignInProps & RouteComponentProps> {
   state = {
     password: '',
     email: '',
@@ -107,25 +108,6 @@ const mapDispatchToProps = { handleGraphqlErrors }
 
 const SignInWithRedux = connect(null, mapDispatchToProps)(SignIn);
 
-const StyledSignIn = styled(SignInWithRedux)`
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-  ::before, ::after {
-    -webkit-box-flex: 1;
-    box-flex: 1;
-    -webkit-flex-grow: 1;
-    flex-grow: 1;
-    content: '';
-    display: block;
-    height: 24px;
-  }
-  form {
-    width: 100%;
-    max-width: ${props => props.theme.breakpoints.sm};
-    display: grid;
-    row-gap: 2rem;
-  }
-`
+const StyledSignIn = AuthFormStyles(SignInWithRedux)
 
 export default StyledSignIn;

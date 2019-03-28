@@ -8,9 +8,9 @@ import { Mutation } from "react-apollo";
 import Link from './Link'
 import LinksContainer from "./LinksContainer";
 import haveIBeenPwnd from '../utils/haveIBeenPwnd'
-import styled from "styled-components";
+import AuthFormStyles from './AuthFormStyles';
 
-class SignUp extends Component<SignUpProps & RouteComponentProps> {
+export class SignUp extends Component<SignUpProps & RouteComponentProps> {
   state = {
     name: '',
     email: '',
@@ -129,18 +129,6 @@ class SignUp extends Component<SignUpProps & RouteComponentProps> {
   }
 }
 
-const StyledSignUp = styled(SignUp)`
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  form {
-    width: 100%;
-    max-width: ${props => props.theme.breakpoints.sm};
-    display: grid;
-    row-gap: 2rem;
-  }
-`
+const StyledSignUp = AuthFormStyles(SignUp)
 
 export default StyledSignUp;

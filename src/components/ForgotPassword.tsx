@@ -3,12 +3,12 @@ import { RouteComponentProps, ForgotPasswordProps } from '../types';
 import Link from './Link';
 import { Mutation } from 'react-apollo';
 import { REQUEST_RESET_MUTATION } from '../apollo/mutations';
-import styled from '../theme'
 import LinksContainer from "./LinksContainer";
 import Button from "./Button";
 import Input from "./Input";
+import AuthFormStyles from './AuthFormStyles';
 
-class ForgotPassword extends Component<RouteComponentProps & ForgotPasswordProps> {
+export class ForgotPassword extends Component<RouteComponentProps & ForgotPasswordProps> {
   state = {
     email: '',
   };
@@ -69,9 +69,9 @@ class ForgotPassword extends Component<RouteComponentProps & ForgotPasswordProps
               <Link to="/">
                 Sign In
               </Link>
-              <Link to="/signup">
+              <Link to="/sign-up">
                 Sign Up
-              </Link>            
+              </Link>
             </LinksContainer>
           </main>
         )}
@@ -80,18 +80,6 @@ class ForgotPassword extends Component<RouteComponentProps & ForgotPasswordProps
   }
 }
 
-const StyledForgotPassword = styled(ForgotPassword)`
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  form {
-    width: 100%;
-    max-width: ${props => props.theme.breakpoints.sm};
-    display: grid;
-    row-gap: 2rem;
-  }
-`
+const StyledForgotPassword = AuthFormStyles(ForgotPassword)
 
 export default StyledForgotPassword
