@@ -76,16 +76,19 @@ export const SIGN_UP_MUTATION = gql`
 
 export const UPDATE_ENTRY_MUTATION = gql`
   mutation UPDATE_ENTRY_MUTATION(
-    $id: ID!,
-    $title: String!,
+    $id: ID!
+    $tempId: String!
+    $title: String!
     $body: String!
   ) {
     updateEntry(
-      id: $id,
-      title: $title,
+      id: $id
+      tempId: $tempId
+      title: $title
       body: $body
     ) {
       id
+      tempId
       title
       body
     }

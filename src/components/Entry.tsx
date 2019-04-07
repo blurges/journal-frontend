@@ -10,6 +10,8 @@ import UpdateEntry from './UpdateEntry';
 import DeleteEntry from './DeleteEntry';
 import DynamicTextarea from './DynamicTextarea';
 import { EntryInterface, EntryProps, handleChangeType } from '../types'
+import { setAlertOptions } from '../redux/actions';
+import { connect } from 'react-redux'
 
 class Entry extends Component<EntryProps> {
   private textareaRef: React.RefObject<HTMLTextAreaElement>;
@@ -71,6 +73,11 @@ class Entry extends Component<EntryProps> {
     stale.body = body
     stale.title = title
     cache.writeQuery({ query: ALL_ENTRIES_QUERY, data });
+
+    this.props.setAlertOptions({
+      text: 'Saved',
+      type: 'info'
+    })
   };
 
   removeFromCache = (cache:any, payload:any) => {
@@ -81,19 +88,19 @@ class Entry extends Component<EntryProps> {
   };
 
   render() {
-    const { entry } = this.props;
+    const { entry: { id, tempId } } = this.props;
     const { confirmEdit, confirmDelete, title, body } = this.state;
 
     return (
       <Mutation
         mutation={UPDATE_ENTRY_MUTATION}
-        variables={{ id: entry.id, title, body }}
+        variables={{ id, tempId, title, body }}
         update={this.updateInCache}
       >
         {(updateEntry, { loading: updating }) => (
           <Mutation
             mutation={DELETE_ENTRY_MUTATION}
-            variables={{ id: entry.id }}
+            variables={{ id }}
             update={this.removeFromCache}
             refetchQueries={[{query: ALL_ENTRIES_QUERY}]}
           >
@@ -105,7 +112,7 @@ class Entry extends Component<EntryProps> {
               >
                 <label htmlFor="body" aria-label="body">
                   <DynamicTextarea
-                    id={entry.id}
+                    id={id}
                     name="entry"
                     spellCheck={false}
                     placeholder="How's things?"
@@ -129,7 +136,7 @@ class Entry extends Component<EntryProps> {
                       updateEntry={updateEntry}
                     />
                     <DeleteEntry
-                      id={entry.id}
+                      id={id}
                       confirmEdit={confirmEdit}
                       confirmDelete={confirmDelete}
                       updating={updating}
@@ -150,7 +157,11 @@ class Entry extends Component<EntryProps> {
   }
 }
 
-const StyledEntry = styled(Entry)`
+const mapDispatchToProps = { setAlertOptions }
+
+const EntryWithRedux = connect(null, mapDispatchToProps)(Entry);
+
+const StyledEntry = styled(EntryWithRedux)`
   list-style-type: none;
   form {
     display: grid;

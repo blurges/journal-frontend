@@ -45,6 +45,8 @@ const AlertWithRedux = connect(mapStateToProps, mapDispatchToProps)(Alert);
 const StyledAlert = styled(AlertWithRedux)`
   position: fixed;
   bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0%);
   display: flex;
   padding: 1rem;
   background: ${props => props.theme.colors.tealLightest};

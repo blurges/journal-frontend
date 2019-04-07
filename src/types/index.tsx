@@ -49,6 +49,7 @@ export interface LinkProps {
 export interface EntryProps {
   className?: string;
   entry: EntryInterface;
+  setAlertOptions: (options: setAlertOptionsParameters) => void; 
 }
 
 export interface StyledComponentProps {
@@ -163,6 +164,7 @@ export interface AlertProps {
 
 export interface EntryInterface {
   id: string;
+  tempId: string;
   title: string;
   body: string;
   __typename: string;
