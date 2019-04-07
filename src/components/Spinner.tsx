@@ -8,7 +8,7 @@ const StyledSpinner = styled.svg`
   height: 20px;
 
   & .path {
-    stroke: ${props => props.theme.tealDark};
+    stroke: ${props => props.theme.colors.tealDark};
     stroke-linecap: round;
     animation: dash 1.5s ease-in-out infinite;
   }

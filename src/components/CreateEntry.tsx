@@ -19,12 +19,6 @@ class CreateEntry extends Component<CreateEntryProps> {
     body: ''
   };
 
-  componentWillMount () {
-    console.log(this.state)
-  }
-  componentDidMount () {
-    console.log(this.state)
-  }
   handleChange:handleChangeType = e => {
     if (e.target) {
       this.setState({
@@ -34,8 +28,6 @@ class CreateEntry extends Component<CreateEntryProps> {
   };
   
   create = (cache:any, payload:any) => {
-    console.log(1)
-    console.log({cache, payload})
     // manually update the cache on the client, so it matches the server
     // 1. Read the cache for the entries we want
     const {__typename, id, tempId, title, body} = payload.data.createEntry
@@ -58,8 +50,6 @@ class CreateEntry extends Component<CreateEntryProps> {
   };
 
   update = (cache:any, payload:any) => {
-    console.log(2)
-    console.log({cache, payload})
     // manually update the cache on the client, so it matches the server
     // 1. Read the cache for the entries we want
     const {__typename, id, tempId, title, body} = payload.data.createEntry

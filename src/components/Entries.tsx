@@ -7,6 +7,7 @@ import { ALL_ENTRIES_QUERY } from '../apollo/queries';
 import { EntryInterface, EntriesProps, RouteComponentProps } from '../types'
 import CreateEntry from './CreateEntry';
 import {Redirect} from '@reach/router'
+import styled from "../theme";
 
 const perPage:number = 10;
 
@@ -62,14 +63,14 @@ class Entries extends Component<EntriesProps & RouteComponentProps> {
                 <Entry entry={entry} key={entry.id} />
               )}
 
-              <div className="x-centered">
+              <div className={this.props.className}>
                 {loading && <Spinner/>}
 
-                {last &&
+                {!loading && last &&
                   <p>The end.</p>
                 }
 
-                {empty &&
+                {!loading && empty &&
                   <p>Your entries will appear here.</p>
                 }
               </div>
@@ -85,5 +86,12 @@ class Entries extends Component<EntriesProps & RouteComponentProps> {
   }
 }
 
-export default Entries;
+const StyledEntries = styled(Entries)`
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  justify-content: center;
+`
+
+export default StyledEntries;
 export { ALL_ENTRIES_QUERY };
