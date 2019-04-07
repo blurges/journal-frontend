@@ -2,7 +2,7 @@ import {ReduxState} from '../types'
 
 export const initialState:ReduxState = {
   navbarOpen: false,
-  alertText: 'asdf kjahsdf;l ljaslkfdj  alksjdf  ',
+  alertText: '',
   alertType: 'info',
   alertTimeout: 0
 }

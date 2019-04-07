@@ -20,9 +20,16 @@ export const CREATE_ENTRY_MUTATION = gql`
 `;
 
 export const DELETE_ENTRY_MUTATION = gql`
-  mutation DELETE_ENTRY_MUTATION($id: ID!) {
-    deleteEntry(id: $id) {
+  mutation DELETE_ENTRY_MUTATION(
+    $id: ID!
+    $tempId: String!
+  ) {
+    deleteEntry(
+      id: $id
+      tempId: $tempId
+    ) {
       id
+      tempId
     }
   }
 `;

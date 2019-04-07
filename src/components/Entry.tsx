@@ -100,7 +100,7 @@ class Entry extends Component<EntryProps> {
         {(updateEntry, { loading: updating }) => (
           <Mutation
             mutation={DELETE_ENTRY_MUTATION}
-            variables={{ id }}
+            variables={{ id, tempId }}
             update={this.removeFromCache}
             refetchQueries={[{query: ALL_ENTRIES_QUERY}]}
           >
