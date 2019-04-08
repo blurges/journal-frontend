@@ -3,12 +3,12 @@ import {ThemeInterface} from './types'
 
 const staticTheme = {
   colors: {
-    black: '#121212',
-    white: '#ffffff',
-    tealDark: '#38a89d',
-    tealLight: '#64d5ca',
-    tealLighter: '#a0f0ed',
-    tealLightest: '#e8fffe',
+    black: 'hsl(0, 0%, 7%)',
+    white: 'hsl(0, 0%, 100%)',
+    tealDark: 'hsl(174, 50%, 44%)',
+    tealLight: 'hsl(174, 57%, 61%)',
+    tealLighter: 'hsl(178, 73%, 78%)',
+    tealLightest: 'hsl(177, 100%, 95%)',
   },
   breakpoints: {
     sm: '600px',

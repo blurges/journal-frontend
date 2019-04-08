@@ -11,6 +11,7 @@ import Entries from './Entries';
 import Account from './Account';
 import Alert from './Alert';
 import Router from "./Router"
+import Know from "./Know"
 
 export class Auth extends Component{
   render () {
@@ -23,6 +24,8 @@ export class Auth extends Component{
           return <>
             <Header user={me}/>
             <Router>
+              <Know path="/know" />
+
               <Home user={me} path="/" />
               <SignIn user={me} path="/sign-in" />
               <ForgotPassword user={me} path="/forgot-password" />
