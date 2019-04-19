@@ -41,6 +41,7 @@ const StyledHeader = styled(Header)`
   justify-content: space-between;
   background: #ffffff;
   background: ${props => props.theme.colors.tealLighter};
+  box-shadow: ${props => props.theme.boxShadow.bottom};
 `;
 
 export default connect()(StyledHeader);

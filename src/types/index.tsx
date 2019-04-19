@@ -36,6 +36,9 @@ export interface ThemeInterface {
     sm: string;
     md: string;
   },
+  boxShadow: {
+    bottom: string;
+  },
   borderRadius: string;
   rem: string;
   em: string;

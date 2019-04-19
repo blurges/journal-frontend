@@ -14,6 +14,9 @@ const staticTheme = {
     sm: '600px',
     md: '1024'
   },
+  boxShadow: {
+    bottom: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)'
+  },
   borderRadius: '5px',
   rem: '16px',
   em: '16px',

@@ -22,7 +22,7 @@ export class Home extends Component<HomeProps & RouteComponentProps> {
         </LinksContainer>
       </main>
     )} else return (
-      <Redirect to="/entries" />
+      <Redirect noThrow to="/entries" />
     );
   }
 }

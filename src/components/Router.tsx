@@ -27,7 +27,7 @@ const StyledRouter = styled(RouteTransition)`
   top: 4rem;
   right: 0;
   left: 0;
-  padding: 1rem;
+  padding: 0 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;

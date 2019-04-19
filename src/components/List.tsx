@@ -43,12 +43,10 @@ class InfiniteScroll extends Component<InfiniteScrollProps> {
 }
 
 const StyledList = styled(InfiniteScroll)`
-  margin: 0;
+  margin: 1rem 0;
   padding: 0;
   width: 100%;
   max-width: ${props => props.theme.breakpoints.sm};
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
   display: grid;
   row-gap: 2rem;
   ::-webkit-scrollbar { 
