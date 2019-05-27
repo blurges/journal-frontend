@@ -18,13 +18,15 @@ export class SignOut extends Component<SignOutProps> {
   render () {
     if (this.props.user) {
       return (
-        <button
-          className={this.props.className}
-          onClick={this.removeToken}
-          type="button"
-        >
-          Sign out
-        </button>
+        <>
+          <button
+            className={this.props.className}
+            onClick={this.removeToken}
+            type="button"
+          >
+            Sign out {this.props.user.email.substr(0, 8)}
+          </button>
+        </>
       )
     } else return null
   }

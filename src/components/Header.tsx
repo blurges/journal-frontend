@@ -5,6 +5,7 @@ import {HeaderProps, ReduxState} from "../types";
 import { connect } from 'react-redux'
 import store from '../redux';
 import BrandLogo from './BrandLogo';
+import NetworkStatus from './NetworkStatus';
 
 class Header extends Component<HeaderProps> {
   constructor(props:HeaderProps) {
@@ -24,6 +25,7 @@ class Header extends Component<HeaderProps> {
     return (
       <header className={this.props.className}>
         <BrandLogo />
+        <NetworkStatus />
         <SignOut user={this.props.user}/>
       </header>
     );
@@ -36,9 +38,9 @@ const StyledHeader = styled(Header)`
   top: 0;
   width: 100%;
   height: 4rem;
-  display: grid;
-  grid-template-columns: 4rem auto;
+  display: flex;
   justify-content: space-between;
+  align-items: center;
   background: #ffffff;
   background: ${props => props.theme.colors.tealLighter};
   box-shadow: ${props => props.theme.boxShadow.bottom};
