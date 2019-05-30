@@ -3,6 +3,7 @@ import { Mutation } from 'react-apollo';
 import styled from 'styled-components';
 import {ALL_ENTRIES_QUERY} from '../apollo/queries';
 import Button from './Button';
+import ConfirmIcon from './ConfirmIcon';
 import DynamicTextarea from './DynamicTextarea';
 import { ApolloConsumer } from 'react-apollo';
 import { CREATE_ENTRY_MUTATION } from '../apollo/mutations';
@@ -115,7 +116,7 @@ class CreateEntry extends Component<CreateEntryProps> {
                     ariaBusy={loading}
                     type="submit"
                   >
-                    Save
+                    <ConfirmIcon />
                   </Button>
                 </form>
               </li>

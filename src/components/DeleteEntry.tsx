@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Button from './Button';
+import CancelIcon from './CancelIcon'
+import DeleteIcon from './DeleteIcon'
 import { DeleteEntryProps } from '../types'
 
 class DeleteEntry extends Component<DeleteEntryProps> {
@@ -23,7 +25,7 @@ class DeleteEntry extends Component<DeleteEntryProps> {
             shrink={confirmEdit}
             onClick={cancelDelete}
           >
-            Cancel
+            <CancelIcon />
           </Button>
         }
         <Button
@@ -32,9 +34,9 @@ class DeleteEntry extends Component<DeleteEntryProps> {
           shrink={confirmEdit}
           onClick={this.handleClick}
         >
-          {confirmEdit && 'D'}
-          {confirmDelete && 'Confirm'}
-          {!confirmEdit && !confirmDelete && 'Delete'}
+          {confirmEdit && <DeleteIcon />}
+          {confirmDelete && <DeleteIcon />}
+          {!confirmEdit && !confirmDelete && <DeleteIcon />}
         </Button>
       </>
     );

@@ -22,16 +22,15 @@ class Button extends Component<ButtonProps> {
 }
 
 const StyledButton = styled(Button)`
-  width: ${props => props.shrink ? '5rem' : '100%'};
+  flex-grow: 1;
   height: 3rem;
   margin: 0 1rem;
   border: 1px solid ${props => props.theme.colors.tealDark};
-  padding: 0 1rem;
-  overflow-x: hidden;
+  padding: 0.5rem;
+  overflow: hidden;
   background: white;
   font-family: 'Lato';
   font-size: 1.5em;
-  text-transform: uppercase;
   transition: all 0.3s;
   &[disabled] {
     opacity: 0.5;

@@ -168,6 +168,7 @@ const StyledEntry = styled(EntryWithRedux)`
   }
   .actions {
     display: flex;
+    justify-content: space-between;
   }
 `;
 

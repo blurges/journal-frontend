@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Button from './Button';
+import ConfirmIcon from './ConfirmIcon'
+import CancelIcon from './CancelIcon'
 import { UpdateEntryProps } from '../types'
 
 class EditEntry extends Component<UpdateEntryProps> {
@@ -22,9 +24,9 @@ class EditEntry extends Component<UpdateEntryProps> {
           onClick={this.handleClick}
           shrink={confirmDelete}
         >
-          {confirmDelete && 'E'}
-          {confirmEdit && 'Confirm'}
-          {!confirmEdit && !confirmDelete && 'Edit'}
+          {confirmDelete && <ConfirmIcon />}
+          {confirmEdit && <ConfirmIcon />}
+          {!confirmEdit && !confirmDelete && <ConfirmIcon />}
         </Button>
         {confirmEdit &&
           <Button
@@ -32,7 +34,7 @@ class EditEntry extends Component<UpdateEntryProps> {
             ariaBusy={updating}
             onClick={cancelUpdate}
           >
-            Cancel
+            <CancelIcon />
           </Button>
         }
       </>
