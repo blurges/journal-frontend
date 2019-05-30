@@ -118,7 +118,6 @@ class Entry extends Component<EntryProps> {
                     placeholder="How's things?"
                     cols={40}
                     rows={2}
-                    maxRows={21}
                     required={true}
                     readOnly={!confirmEdit}
                     value={body}

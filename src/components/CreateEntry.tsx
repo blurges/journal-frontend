@@ -104,7 +104,6 @@ class CreateEntry extends Component<CreateEntryProps> {
                       placeholder="How's things?"
                       cols={40}
                       rows={2}
-                      maxRows={20}
                       required={true}
                       value={this.state.body}
                       onChange={this.handleChange}

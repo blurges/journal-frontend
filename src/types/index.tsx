@@ -180,17 +180,17 @@ export interface EntryInterface {
 
 export interface DynamicTextareaProps {
   className?: string;
-  id: string;
-  name: string;
-  spellCheck: boolean;
-  placeholder: string;
   cols: number;
-  rows: number;
-  maxRows: number;
-  required: boolean;
-  value: string;
+  id: string;
+  maxRows?: number;
+  name: string;
   onChange: handleChangeType;
+  placeholder: string;
   readOnly: boolean;
+  required: boolean;
+  rows: number;
+  spellCheck: boolean;
+  value: string;
 }
 
 export interface DeleteEntryProps {  
