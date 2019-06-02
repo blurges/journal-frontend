@@ -14,7 +14,7 @@ const SVG = ({
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      height="100%"
+      height="2rem"
       viewBox="0 0 62.015724 100"
     >
       <title>

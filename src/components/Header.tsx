@@ -4,8 +4,8 @@ import styled from "../theme";
 import {HeaderProps, ReduxState} from "../types";
 import { connect } from 'react-redux'
 import store from '../redux';
-import BrandLogo from './BrandLogo';
 import NetworkStatus from './NetworkStatus';
+import ALogo from './ALogo'
 
 class Header extends Component<HeaderProps> {
   constructor(props:HeaderProps) {
@@ -24,7 +24,11 @@ class Header extends Component<HeaderProps> {
   render() {
     return (
       <header className={this.props.className}>
-        <BrandLogo />
+        <a
+          href="http://aleks.tech"
+        >
+          <ALogo />
+        </a>
         <NetworkStatus />
         <SignOut user={this.props.user}/>
       </header>
@@ -44,6 +48,16 @@ const StyledHeader = styled(Header)`
   background: #ffffff;
   background: ${props => props.theme.colors.tealLighter};
   box-shadow: ${props => props.theme.boxShadow.bottom};
+  a {
+    display: inline-block;
+    width: 4rem;
+    height: 4rem;
+    padding: 1rem;
+    border: 1px solid ${props => props.theme.colors.tealLighter};
+    :hover {
+      border: 1px solid ${props => props.theme.colors.tealDark};
+    }
+  }
 `;
 
 export default connect()(StyledHeader);

@@ -3,6 +3,7 @@ import { CURRENT_USER_QUERY, ALL_ENTRIES_QUERY } from '../apollo/queries';
 import apolloClient from '../apollo/client';
 import {SignOutProps} from "../types";
 import styled from '../theme'
+import SignOutIcon from './SignOutIcon'
 
 export class SignOut extends Component<SignOutProps> {
   removeToken = () => {
@@ -24,7 +25,7 @@ export class SignOut extends Component<SignOutProps> {
             onClick={this.removeToken}
             type="button"
           >
-            Sign out {this.props.user.email.substr(0, 8)}
+            <SignOutIcon />
           </button>
         </>
       )
