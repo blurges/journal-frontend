@@ -28,16 +28,17 @@ class DeleteEntry extends Component<DeleteEntryProps> {
             <CancelIcon />
           </Button>
         }
-        <Button
-          disabled={updating || deleting ? true : false}
-          ariaBusy={updating || deleting ? true : false}
-          shrink={confirmEdit}
-          onClick={this.handleClick}
-        >
-          {confirmEdit && <DeleteIcon />}
-          {confirmDelete && <DeleteIcon />}
-          {!confirmEdit && !confirmDelete && <DeleteIcon />}
-        </Button>
+        {!confirmEdit &&
+          <Button
+            disabled={updating || deleting ? true : false}
+            ariaBusy={updating || deleting ? true : false}
+            shrink={confirmEdit}
+            onClick={this.handleClick}
+          >
+            {confirmDelete && <DeleteIcon />}
+            {!confirmDelete && <DeleteIcon />}
+          </Button>
+        }
       </>
     );
   }

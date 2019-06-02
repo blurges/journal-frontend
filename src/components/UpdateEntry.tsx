@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Button from './Button';
+import EditIcon from './EditIcon'
 import ConfirmIcon from './ConfirmIcon'
 import CancelIcon from './CancelIcon'
 import { UpdateEntryProps } from '../types'
@@ -18,16 +19,17 @@ class EditEntry extends Component<UpdateEntryProps> {
 
     return (
       <>
-        <Button
-          disabled={updating || deleting ? true : false}
-          ariaBusy={updating || deleting ? true : false}
-          onClick={this.handleClick}
-          shrink={confirmDelete}
-        >
-          {confirmDelete && <ConfirmIcon />}
-          {confirmEdit && <ConfirmIcon />}
-          {!confirmEdit && !confirmDelete && <ConfirmIcon />}
-        </Button>
+        {!confirmDelete && 
+          <Button
+            disabled={updating || deleting ? true : false}
+            ariaBusy={updating || deleting ? true : false}
+            onClick={this.handleClick}
+            shrink={confirmDelete}
+          >
+            {confirmEdit && <ConfirmIcon />}
+            {!confirmEdit && <EditIcon />}
+          </Button>
+        }
         {confirmEdit &&
           <Button
             disabled={updating}
