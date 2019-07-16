@@ -1,8 +1,8 @@
 
-import {initialState} from './state'
-import {setAlertOptionsParameters} from '../types'
+import {initialState} from '../state'
+import {setAlertOptionsParameters} from '../../types'
 
-export const rootReducer = (
+export const alert = (
   state = initialState,
   action: {
     type:string,
@@ -16,14 +16,9 @@ export const rootReducer = (
           alertType: action.options.type,
           alertTimeout: action.options.timeout || 0
         }
-      case 'TOGGLE_NAVBAR':
-        return {
-          ...state,
-          navbarOpen: !state.navbarOpen
-        }
       default:
         return state
   }
 }
 
-export default rootReducer
+export default alert

@@ -122,6 +122,7 @@ export interface ReduxState {
   alertType: 'info' | 'error';
   alertTimeout: number;
   alertText: string;
+  requestCount: number;
 }
 
 export interface AppState {
@@ -150,9 +151,15 @@ export interface HeaderProps {
   className?: string;
   user: User;
 }
+export interface HeaderState {
+  requestCount: number;
+}
 export interface SignOutProps {
   className?: string;
   user: User;
+}
+export interface SpinnerProps {
+  spin: boolean;
 }
 
 export interface User {
@@ -188,7 +195,7 @@ export interface DynamicTextareaProps {
   placeholder: string;
   readOnly: boolean;
   required: boolean;
-  rows: number;
+  rows?: number;
   spellCheck: boolean;
   value: string;
 }

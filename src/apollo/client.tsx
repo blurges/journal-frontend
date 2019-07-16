@@ -10,6 +10,7 @@ import config from "../config"
 import {PersistentStorage, PersistedData, NormalizedCacheObject} from '../types/index'
 import store from '../redux'
 import {setAlertOptions} from '../redux/actions'
+import PendingLink from './pendingLink'
 
 let uri
 if (process.env.NODE_ENV === "development") {
@@ -75,7 +76,9 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
   }
 });
 
-const link = ApolloLink.from([errorLink, authMiddleware, setRequestTokenMiddleware, retry, http]);
+const pendingLink = new PendingLink()
+
+const link = ApolloLink.from([pendingLink, errorLink, authMiddleware, setRequestTokenMiddleware, retry, http]);
 
 const cache = new InMemoryCache({
   dataIdFromObject: (object:any) => {

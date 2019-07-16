@@ -21,6 +21,11 @@ export const setAlertOptions = (options:setAlertOptionsParameters) => ({
   options
 })
 
+export const setRequestCount = (count: number) => ({
+  type: 'SET_REQUEST_COUNT',
+  count
+})
+
 export const toggleNavbar = (navbarOpen:boolean) => ({
   type: 'TOGGLE_NAVBAR',
   navbarOpen

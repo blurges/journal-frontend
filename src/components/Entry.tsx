@@ -117,7 +117,6 @@ class Entry extends Component<EntryProps> {
                     spellCheck={false}
                     placeholder="How's things?"
                     cols={40}
-                    rows={2}
                     required={true}
                     readOnly={!confirmEdit}
                     value={body}

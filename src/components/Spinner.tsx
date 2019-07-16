@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
+import { SpinnerProps } from '../types'
 
 const StyledSpinner = styled.svg`
   animation: rotate 1s linear infinite;
@@ -10,6 +11,9 @@ const StyledSpinner = styled.svg`
   & .path {
     stroke: ${props => props.theme.colors.tealDark};
     stroke-linecap: round;
+  }
+
+  & .spin {
     animation: dash 1.5s ease-in-out infinite;
   }
 
@@ -35,10 +39,11 @@ const StyledSpinner = styled.svg`
 `;
 
 
-const Spinner = () => (
-  <StyledSpinner viewBox="0 0 50 50">
+const Spinner = (props:SpinnerProps) => {
+  const { spin } = props;
+  return <StyledSpinner viewBox="0 0 50 50">
     <circle
-      className="path"
+      className={`path ${spin ? 'spin' : ''}`}
       cx="25"
       cy="25"
       r="20"
@@ -46,6 +51,6 @@ const Spinner = () => (
       strokeWidth="2"
     />
   </StyledSpinner>
-);
+};
 
 export default Spinner;

@@ -1,23 +1,24 @@
 import React, { Component } from 'react';
 import SignOut from './SignOut'
 import styled from "../theme";
-import {HeaderProps, ReduxState} from "../types";
+import {HeaderProps, HeaderState} from "../types";
 import { connect } from 'react-redux'
 import store from '../redux';
 import NetworkStatus from './NetworkStatus';
+import Spinner from './Spinner';
 import ALogo from './ALogo'
 
-class Header extends Component<HeaderProps> {
+class Header extends Component<HeaderProps, HeaderState> {
   constructor(props:HeaderProps) {
     super(props);
 
     this.state = {
-      navbarOpen: false
+      requestCount: 0
     };
 
     store.subscribe(() => {
       this.setState({
-        navbarOpen: store.getState().navbarOpen
+        requestCount: store.getState().calls.requestCount
       });
     });
   }
@@ -29,8 +30,9 @@ class Header extends Component<HeaderProps> {
         >
           <ALogo />
         </a>
+        <Spinner spin={!!this.state.requestCount} />
         <NetworkStatus />
-        <SignOut user={this.props.user}/>
+        <SignOut user={this.props.user} />
       </header>
     );
   }
