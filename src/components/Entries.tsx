@@ -50,6 +50,7 @@ class Entries extends Component<EntriesProps & RouteComponentProps> {
                     updateQuery: (prev, { fetchMoreResult }) => {
                       if (!fetchMoreResult) return prev;
                       return Object.assign({}, prev, {
+                        // @ts-ignore
                         entries: [...prev.entries, ...fetchMoreResult.entries]
                       });
                     }
@@ -64,7 +65,7 @@ class Entries extends Component<EntriesProps & RouteComponentProps> {
               )}
 
               <div className={this.props.className}>
-                {loading && <Spinner/>}
+                {loading && <Spinner spin={true}/>}
 
                 {!loading && last &&
                   <p>The end.</p>

@@ -18,6 +18,7 @@ async function checkPassword(password:string) {
  
   let hashedPassword = sha1(password);
   if (typeof hashedPassword !== 'string') {
+    // @ts-ignore
     hashedPassword = hashedPassword.join()
   }
   const hashedPasswordPrefix = hashedPassword.substr(0, PREFIX_LENGTH);
